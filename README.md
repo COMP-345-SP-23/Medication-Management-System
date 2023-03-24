@@ -3,7 +3,7 @@
 ## Project 01 - Bank Software
 
 Names:
-<< add 3-4 names here >>
+<< Simret >>
 
 Link to UML Use Case Diagram:
 << add linkk here >>

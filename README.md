@@ -3,7 +3,7 @@
 ## Project 02 - Medication Management System
 
 Names:
-<< Simret, Ryan >>
+<< Simret, Ryan, Nardos >>
 
 Link to UML Use Case Diagram:
 << add linkk here >>

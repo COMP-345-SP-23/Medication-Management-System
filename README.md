@@ -3,7 +3,7 @@
 ## Project 01 - Bank Software
 
 Names:
-<< Simret >>
+<< Simret, Ryan >>
 
 Link to UML Use Case Diagram:
 << add linkk here >>

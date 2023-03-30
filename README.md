@@ -11,6 +11,9 @@ Link to UML Use Case Diagram:
 Link to UML Class Diagram:
 << add link here >>
 
+Sprint 1 Goal:
+Implement add, update, and remove methods for medication
+
 Three Use Cases that you will implement first:
 1. -
 2. - 

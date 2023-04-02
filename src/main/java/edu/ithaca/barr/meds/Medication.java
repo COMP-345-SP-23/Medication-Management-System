@@ -7,30 +7,25 @@ public class Medication {
     private double dosage;
     private int frequency;
     
-    public Medication(String name, int id, double dosage, int frequency) {
-        // Constructor code goes here
+    public Medication(String name, int id, double dosage, int frequency){
+        this.name = name;
+        this.id = id;
+        this.dosage = dosage;
+        this.frequency = frequency;
     }
 
-    public String getName() {
-        // Getter code for name goes here
-
-        throw new UnsupportedOperationException("Not implemented yet.");
+    public String getName(){
+        return name;
     }
     
-    public int getId() {
-        // Getter code for id goes here
-        throw new UnsupportedOperationException("Not implemented yet.");
+    public int getId(){
+        return id;
     }
     
-    public double getDosage() {
-        // Getter code for dosage goes here
-        throw new UnsupportedOperationException("Not implemented yet.");
-    }
-    
-    public int getFrequency() {
-        // Getter code for frequency goes here
-        throw new UnsupportedOperationException("Not implemented yet.");
+    public double getDosage(){
+        return dosage;
     }
 
-    
-}
+    public int getFrequency(){
+        return frequency;
+    }}

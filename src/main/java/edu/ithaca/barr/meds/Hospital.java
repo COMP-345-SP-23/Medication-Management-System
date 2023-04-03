@@ -13,11 +13,19 @@ public class Hospital {
 
 
 public ArrayList<Medication> getMedications(){
-    throw new UnsupportedOperationException("Not implemented yet.");
+    return medications;
 }
 
 public Medication searchMedication(int id){
-    throw new UnsupportedOperationException("Not implemented yet.");
+    Medication result= null; 
+    for(Medication medication : medications ){
+
+        if (medication.getId() == id){
+        result = medication;
+        break;
+        }
+}
+return result;
 }
 
 }

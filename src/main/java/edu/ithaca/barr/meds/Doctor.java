@@ -2,6 +2,15 @@ package edu.ithaca.barr.meds;
 
 public class Doctor {
     
+    String email;
+    String password;
+
+    public Doctor(String email, String password){
+        this.email = email;
+        this.password = password;
+    }
+
+
     Hospital hospital = new Hospital();
 
     public void addMedication(String name , int id , double dosage, int frequency){
@@ -22,5 +31,11 @@ public class Doctor {
         deleteMedication(id);
         addMedication(name, id, dosage, frequency);
 
+    }
+    public String getEmail(){
+        return email;
+    }
+    public String getPassword(){
+        return password;
     }
 }

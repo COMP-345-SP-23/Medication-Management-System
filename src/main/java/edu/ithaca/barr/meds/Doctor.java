@@ -1,5 +1,7 @@
 package edu.ithaca.barr.meds;
 
+import java.util.HashMap;
+
 public class Doctor {
     
     String email;
@@ -38,4 +40,31 @@ public class Doctor {
     public String getPassword(){
         return password;
     }
+
+
+/*  Methods that should be written in the hospital class for this method to work :
+    *searchPatient method that searchs a patient from the list of all patients should 
+    *addToPrescriptionList that adds all the prescribed medications to an arraylist
+
+*/
+public void prescribeMedication(int patientId, int medicationId, double dosage, int frequency) {
+    Medication medication = hospital.searchMedication(medicationId);
+    //Patient patient = hospital.searchPatient(patientId);
+
+    if (medication == null) {
+        throw new IllegalArgumentException("Invalid medication ID.");
+    }
+
+    /*if (patient == null) {
+        throw new IllegalArgumentException("Patient not found.");
+    }*/
+
+    HashMap<String, Object> prescription = new HashMap<String, Object>();
+    prescription.put("medication", medication);
+   // prescription.put("patient", patient);
+    prescription.put("dosage", dosage);
+    prescription.put("frequency", frequency);
+
+    //hospital.addToPrescriptionList(prescription);
+}
 }

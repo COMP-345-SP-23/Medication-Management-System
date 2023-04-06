@@ -5,6 +5,7 @@
 Names:
 << Simret, Ryan, Nardos >>
 
+
 Link to UML Use Case Diagram:
 << add linkk here >>
 
@@ -13,6 +14,10 @@ Link to UML Class Diagram:
 
 Sprint 1 Goal:
 Implement add, update, and remove methods for medication
+
+Link to Sprint-1 Demo Template:
+https://docs.google.com/document/d/1fax_K5YwO2fSB1nvWPvlz7bAZdY4FE4a0QqgtNC8f9I/edit?usp=sharing
+
 
 Three Use Cases that you will implement first:
 1. -

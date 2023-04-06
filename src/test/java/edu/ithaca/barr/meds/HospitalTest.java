@@ -59,7 +59,7 @@ public class HospitalTest {
         assertTrue(DoctorAccount.isEmailValid( "a@b.com"));   // valid email address
         assertTrue(DoctorAccount.isEmailValid( "a-b@b.com")); // valid placement of dash
         assertTrue(DoctorAccount.isEmailValid( "a_b@b.com")); // valid placement of underscore
-        assertFalse( DoctorAccount.isEmailValid(""));         // empty string
+        assertFalse(DoctorAccount.isEmailValid(""));         // empty string
         assertTrue(DoctorAccount.isEmailValid( "a.b@b.com")); // Valid Placement of dot
 
 
@@ -76,19 +76,19 @@ public class HospitalTest {
         assertTrue(app.createDoctorAccount("a@b.com", "password123", "Doctor"));
 
         //Testing create patient works with good inputs
-        assertTrue(app.createPatientAccount("a@b.com", "password123", "Patient"));
+        assertTrue(app.createPatientAccount("a@b.com", "password123", "Patient", "John", "Doe", 1));
         
         // Make sure create doctor fails with invalid email
         assertFalse(app.createDoctorAccount("a..b@b.com", "password123", "Doctor"));
 
         // Make sure create patient fails with invalid email
-        assertFalse(app.createPatientAccount("a..b@b.com", "password123", "Patient"));
+        assertFalse(app.createPatientAccount("a..b@b.com", "password123", "Patient", "Jane", "Doe", 2));
 
         // Make sure create doctor fails with invalid password
         assertFalse(app.createDoctorAccount("a@b.com", " ", "Doctor"));
 
         // Make sure create patient fails with invalid password
-        assertFalse(app.createPatientAccount("a@b.com", " ", "Patient"));
+        assertFalse(app.createPatientAccount("a@b.com", " ", "Patient", "Mike", "Smith", 3));
     }
     @Test
     public void testLogin() {
@@ -98,7 +98,7 @@ public class HospitalTest {
         // Test login works for doctor account that exists login
         assertTrue(app.login("a@b.com", "password123"));
 
-        app.createPatientAccount("a@c.com", "password123", "Patient");
+        app.createPatientAccount("a@c.com", "password123", "Patient", "John", "Doe", 1);
         // Test login works for doctor account that exists login
         assertTrue(app.login("a@c.com", "password123"));
 

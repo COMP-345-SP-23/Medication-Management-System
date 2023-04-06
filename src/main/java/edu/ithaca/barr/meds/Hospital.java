@@ -9,7 +9,7 @@ public class Hospital {
     ArrayList<Medication> medications;
 
     public Hospital() {
-        this.medications = new ArrayList();
+        this.medications = new ArrayList<>();
     }
 
 
@@ -44,9 +44,9 @@ public class Hospital {
             return false;
         }
     }
-    public boolean createPatientAccount(String email, String password, String UserType) {
-        if(isAccountValid(email, password, password)){
-            Patient newPatient = new Patient(email, password);
+    public boolean createPatientAccount(String email, String password, String UserType, String firstname, String lastname, int id) {
+        if(isAccountValid(email, password, UserType)){
+            Patient newPatient = new Patient(firstname, lastname, id, email, password);
             // Add new doctor account to the HashMap
             patients.put(email, newPatient);
             return true;

@@ -28,4 +28,5 @@ public class Medication {
 
     public int getFrequency(){
         return frequency;
-    }}
+    }
+}

@@ -5,12 +5,10 @@
 Names:
 << Simret, Ryan, Nardos, Jackson >>
 
+## Sprint 1
 
-Link to UML Use Case Diagram:
-<< add linkk here >>
-
-Link to UML Class Diagram:
-https://drive.google.com/drive/u/0/my-drive
+Link to UML Diagrams:
+https://drive.google.com/file/d/17STnlC82BHdTzgcE2tbXpQmmoAd3Nef2/view?usp=sharing
 
 Sprint 1 Goal:
 Implement add, update, and remove methods for medication
@@ -42,4 +40,18 @@ Don't forget to use Test-Driven Development (TDD)
 3. Implement Method Functions
 
 Good Luck!
+
+## Sprint 2
+
+Link to UML Diagrams: 
+<<add link here>>
+
+Sprint 2 Goal: 
+<<add goal here>>
+
+Link to Sprint-2 Demo Template: 
+<<add link here>>
+
+Link to Sprint-2 Retrospective Template: 
+<<add link here>>
 

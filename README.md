@@ -44,7 +44,7 @@ Good Luck!
 ## Sprint 2
 
 Link to UML Diagrams: 
-<<add link here>>
+https://drive.google.com/file/d/173eo1GQB0OruaIJAZN5AbeuT8WhMS_RH/view?usp=sharing
 
 Sprint 2 Goal: 
 <<add goal here>>

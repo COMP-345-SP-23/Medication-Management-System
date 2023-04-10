@@ -22,16 +22,16 @@ https://docs.google.com/document/d/1jvVmxO__ctFuvnuccIxOlFyEPgpHO2GMbjiDkYvotwk/
 
 
 Three Use Cases that you will implement first:
-1. -
-2. - 
-3. - 
+1. Users can log in with their account
+2. Doctors can prescribe medication to patients
+3. The hospital can keep track of all available medications
 
 Which classes & methods do you need to implement for these use cases?
 (Indicated which team member is responsible for the implemenation)
-1. -
-2. -
-3. -
-4. -
+1. Doctor - prescribeMedication, updatePrescription (Simret)
+2. Patient - requestMedication, viewMedication, isPrescribed, getPassword (Ryan)
+3. Hospital - searchMedication, createDoctorAccount, createPatientAccount, login, isAccountValid, isEmailValid, isInputValid, isPasswordValid (Nardos, Jackson)
+4. Medication - getName, getId, getDosage, getFrequency (Simret)
 5. << add more as needed >>
 
 Don't forget to use Test-Driven Development (TDD)
@@ -54,4 +54,16 @@ Link to Sprint-2 Demo Template:
 
 Link to Sprint-2 Retrospective Template: 
 <<add link here>>
+
+Use Cases to implement: 
+1. -
+2. -
+3. -
+
+Classes and methods to implement: 
+1. -
+2. -
+3. -
+4. -
+5. -
 

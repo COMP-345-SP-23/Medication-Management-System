@@ -31,7 +31,7 @@ Which classes & methods do you need to implement for these use cases?
 1. Doctor - prescribeMedication, updatePrescription (Simret)
 2. Patient - requestMedication, viewMedication, isPrescribed, getPassword (Ryan)
 3. Hospital - searchMedication, createDoctorAccount, createPatientAccount, login, isAccountValid, isEmailValid, isInputValid, isPasswordValid (Nardos, Jackson)
-4. Medication - getName, getId, getDosage, getFrequency (Simret)
+4. Medication - getName, getId, getDosage, getFrequency (Nardos)
 5. << add more as needed >>
 
 Don't forget to use Test-Driven Development (TDD)

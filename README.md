@@ -10,7 +10,7 @@ Link to UML Use Case Diagram:
 << add linkk here >>
 
 Link to UML Class Diagram:
-<< add link here >>
+https://drive.google.com/drive/u/0/my-drive
 
 Sprint 1 Goal:
 Implement add, update, and remove methods for medication

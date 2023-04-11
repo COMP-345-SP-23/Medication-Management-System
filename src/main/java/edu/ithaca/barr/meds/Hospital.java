@@ -1,5 +1,6 @@
 package edu.ithaca.barr.meds;
 
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -233,7 +234,7 @@ public class Hospital {
                 // "_" = 95 ,"-" = 45
 
 
-                // check is the cur char are in the above mentioned arange
+                // check is the cur char are in the above mentioned range
                 if(!((cur>=48 && cur<=57) || (cur>=65 && cur<=90) || (cur>=97 && cur<=122) || cur == 95 || cur == 45)){
                     return false;
                 }  
@@ -265,4 +266,7 @@ public class Hospital {
         }
 
       
+
+
+
 }

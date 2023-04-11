@@ -13,9 +13,7 @@ public class Doctor {
         this.email = email;
         this.password = password;
         this.hospital = hospital;
-        
-        this.hospital = hospital;
-        
+          
     }
 
 
@@ -64,11 +62,11 @@ public void prescribeMedication(int patientId, int medicationId, double dosage, 
         throw new IllegalArgumentException("Invalid medication ID.");
     }
 
-    if (patient == null) {
+    
     if (patient == null) {
         throw new IllegalArgumentException("Patient not found.");
     }
-    }
+    
 
     HashMap<String, Object> prescription = new HashMap<String, Object>();
     prescription.put("medication", medication);

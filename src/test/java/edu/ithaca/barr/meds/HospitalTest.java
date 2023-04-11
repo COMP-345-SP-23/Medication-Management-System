@@ -146,7 +146,7 @@ public class HospitalTest {
     //     assertTrue(app.login("a@c.com", "password123"));
 
     //     // Test login doesn't work with account that doesnt exist
-    //     assertFalse(app.login("a@d.com", "password123"));
+    //     assertFalse(app.login("a@d.com", "password123")); 
 
 
         

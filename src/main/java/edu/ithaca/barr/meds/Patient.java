@@ -12,7 +12,10 @@ public class Patient {
     private String password;
     ArrayList<Medication> prescribedMeds;
     ArrayList<Medication> currentMeds;
-    public Patient(String email, String password) {
+    public Patient(String firstname, String lastname, int id, String email, String password) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.id = id;
         this.email = email;
         this.password = password;
         this.prescribedMeds = new ArrayList<>();
@@ -48,27 +51,6 @@ public class Patient {
         return password;
     }
     
-    
-
-    public Patient(String firstname, String lastname, int id, String email, String password) {
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.id = id;
-        this.email = email;
-        this.password = password;
-        this.prescribedMeds = new ArrayList<>();
-        this.currentMeds = new ArrayList<>();
-    }
-
-    public ArrayList<Medication> viewMedication() {
-        return currentMeds;
-    }
-
-    public void requestMedication(Medication med) {
-        if (prescribedMeds.contains(med)) {
-            currentMeds.add(med);
-        }
-    }
 
     public boolean isPrescribed(Medication med) {
         if (prescribedMeds.contains(med)) {

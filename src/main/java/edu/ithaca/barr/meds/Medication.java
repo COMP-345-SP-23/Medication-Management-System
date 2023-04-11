@@ -7,7 +7,7 @@ public class Medication {
     private double dosage;
     private int frequency;
     
-    public Medication(String name, int id, double dosage, int frequency){
+    public Medication(String name, int id){
         this.name = name;
         this.id = id;
         this.dosage = dosage;
@@ -22,11 +22,5 @@ public class Medication {
         return id;
     }
     
-    public double getDosage(){
-        return dosage;
-    }
-
-    public int getFrequency(){
-        return frequency;
-    }
+ 
 }

@@ -9,8 +9,8 @@ public class PatientTest {
     public void viewMedicationTest() {
         //creating a list of available medications
         Hospital hospital = new Hospital();
-        Medication advil = new Medication("advil", 1, 500.00, 2);
-        Medication tylenol = new Medication("tylenol", 2, 500.00, 2);
+        Medication advil = new Medication("advil", 1);
+        Medication tylenol = new Medication("tylenol", 2);
         hospital.medications.add(advil);
         hospital.medications.add(tylenol);
 
@@ -24,8 +24,8 @@ public class PatientTest {
     @Test
     public void requestMedicationTest() {
         Hospital hospital = new Hospital();
-        Medication advil = new Medication("advil", 1, 500.00, 2);
-        Medication tylenol = new Medication("tylenol", 2, 500.00, 2);
+        Medication advil = new Medication("advil", 1);
+        Medication tylenol = new Medication("tylenol", 2);
         hospital.medications.add(advil);
         hospital.medications.add(tylenol);
 
@@ -39,8 +39,8 @@ public class PatientTest {
     @Test
     public void isPrescribedTest() {
         Hospital hospital = new Hospital();
-        Medication advil = new Medication("advil", 1, 500.00, 2);
-        Medication tylenol = new Medication("tylenol", 2, 500.00, 2);
+        Medication advil = new Medication("advil", 1);
+        Medication tylenol = new Medication("tylenol", 2);
         hospital.medications.add(advil);
 
         Patient p1 = new Patient("patient", "smith", 1, "patient@a.com", "password");

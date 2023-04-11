@@ -8,9 +8,12 @@ public class Doctor {
     String email;
     String password;
 
+    
     public Doctor(String email, String password,Hospital hospital){
         this.email = email;
         this.password = password;
+        this.hospital = hospital;
+        
         this.hospital = hospital;
         
     }
@@ -20,6 +23,7 @@ public class Doctor {
 
     public void addMedication(String name ){
         hospital.addToMedications(name);
+    
     }
 
     public void deleteMedication(int medId){
@@ -31,8 +35,10 @@ public class Doctor {
 
    
     //deletes the medication with the indicated Id and creates another one with the same id
+  
     public void updateMedication(String name, int id){
         deleteMedication(id);
+        addMedication(name);
         addMedication(name);
 
     }
@@ -52,21 +58,26 @@ public class Doctor {
 public void prescribeMedication(int patientId, int medicationId, double dosage, int frequency) {
     Medication medication = hospital.searchMedication(medicationId);
     Patient patient = hospital.searchPatient(patientId);
+    
 
     if (medication == null) {
         throw new IllegalArgumentException("Invalid medication ID.");
     }
 
     if (patient == null) {
+    if (patient == null) {
         throw new IllegalArgumentException("Patient not found.");
+    }
     }
 
     HashMap<String, Object> prescription = new HashMap<String, Object>();
     prescription.put("medication", medication);
     prescription.put("patient", patient);
+    prescription.put("patient", patient);
     prescription.put("dosage", dosage);
     prescription.put("frequency", frequency);
 
     hospital.addToPrescriptionList(prescription);
+    
 }
 }

@@ -21,4 +21,5 @@ public class MedicationTest {
         assertEquals(123, med.getId());
     }
    
+    
 }

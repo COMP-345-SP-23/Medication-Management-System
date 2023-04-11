@@ -1,93 +1,151 @@
 package edu.ithaca.barr.meds;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+
+
+
 public class Hospital {
-    
+
+    // ArrayList to store Medication objects
     ArrayList<Medication> medications;
 
+    // ArrayList to store prescription information as HashMap objects
+    ArrayList<HashMap<String, Object>> prescriptionList;
+
+    // ArrayList to store Patient objects
+    ArrayList<Patient> patients;
+
+    // Constructor to initialize the ArrayLists
     public Hospital() {
-        this.medications = new ArrayList<>();
+        this.medications = new ArrayList<Medication>();
+        this.prescriptionList = new ArrayList<HashMap<String, Object>>();
+        this.patients = new ArrayList<Patient>();
     }
 
-
-    public ArrayList<Medication> getMedications(){
+    // Method to get the list of Medication objects
+    public ArrayList<Medication> getMedications() {
         return medications;
     }
 
-    public Medication searchMedication(int id){
-        Medication result= null; 
-        for(Medication medication : medications ){
+    // Method to get the list of Patient objects
+    public ArrayList<Patient> getPatients() {
+        return patients;
+    }
 
-            if (medication.getId() == id){
-            result = medication;
-            break;
+    // Method to get the list of prescribed Medication information as HashMap objects
+    public ArrayList<HashMap<String, Object>> getPrescribedMedications() {
+        ArrayList<HashMap<String, Object>> prescribedMedications = new ArrayList<HashMap<String, Object>>();
+
+        for (HashMap<String, Object> prescription : prescriptionList) {
+            prescribedMedications.add(prescription);
+        }
+
+        return prescribedMedications;
+    }
+
+    // Method to add Medication to the list of Medication objects
+    public void addToMedications(String name) {
+        int id = medications.size() + 1;
+        Medication medication = new Medication(name, id);
+        medications.add(medication);
+    }
+
+    // Method to search for a Medication by its id
+    public Medication searchMedication(int id) {
+        Medication result = null;
+        for (Medication medication : medications) {
+
+            if (medication.getId() == id) {
+                result = medication;
+                break;
             }
         }
-            return result;
+        return result;
     }
 
-    HashMap<String,Doctor> doctors = new HashMap<>();
-    HashMap<String,Patient> patients = new HashMap<>();
-
-    public boolean createDoctorAccount(String email, String password, String UserType) {
-        if(isAccountValid(email, password, password)){
-            Doctor newDoctor = new Doctor(email, password);
-            // Add new doctor account to the HashMap
-            doctors.put(email, newDoctor);
-            return true;
+    // Method to search for a prescription by Patient's id
+    public HashMap<String, Object> searchPrescriptionByPatientId(int patientId) {
+        for (HashMap<String, Object> prescription : prescriptionList) {
+            Patient patient = (Patient) prescription.get("patient");
+            if (patient.getId() == patientId) {
+                return prescription;
+            }
         }
+        return null;
+    }
+
+    // Method to add a prescription to the list of prescription information as HashMap objects
+    public void addToPrescriptionList(HashMap<String, Object> prescription) {
+        prescriptionList.add(prescription);
+    }
+
+    // Method to create a Patient object and add it to the list of Patient objects
+    public void createPatient(String firstname, String lastname, String email, String password) {
+        if(isAccountValid(email, password)){
+        int id = patients.size() + 1;
+        Patient patient = new Patient(firstname, lastname, id, email, password);
+        patients.add(patient);}
         else{
-            System.out.println("Account information invalid");
-            return false;
-        }
-    }
-    public boolean createPatientAccount(String email, String password, String UserType, String firstname, String lastname, int id) {
-        if(isAccountValid(email, password, UserType)){
-            Patient newPatient = new Patient(firstname, lastname, id, email, password);
-            // Add new doctor account to the HashMap
-            patients.put(email, newPatient);
-            return true;
-        }
-        else{
-            System.out.println("Account information invalid");
-            return false;
+           throw new IllegalArgumentException("Incorrect email address or password.");
         }
     }
 
+    // Method to search for a Patient by their id
+    public Patient searchPatient(int id) {
+        Patient result = null;
+        for (Patient patient : patients) {
+
+            if (patient.getId() == id) {
+                result = patient;
+                break;
+            }
+        }
+        return result;
+    }
+
+
+
+    // public boolean createDoctorAccount(String email, String password, String UserType) {
+    //     if(isAccountValid(email, password, password)){
+    //         Doctor newDoctor = new Doctor(email, password);
+    //         // Add new doctor account to the HashMap
+    //         doctors.put(email, newDoctor);
+    //         return true;
+    //     }
+    //     else{
+    //         System.out.println("Account information invalid");
+    //         return false;
+    //     }
+    // }
+   
 
 
 
     public boolean login(String email, String password) {
             // Check if email address is in the HashMap
-            if (doctors.containsKey(email)) {
-                Doctor doctor = doctors.get(email);
-                if (doctor.getPassword().equals(password)) {
-                    System.out.println("Login successful!");
-                    return true;
-                }
-                else{
-                    System.out.println("Incorrect email address or password.");
-                    return false;
-                }
-            }
-            else if(patients.containsKey(email)){
-                Patient patient = patients.get(email);
-                if (patient.getPassword().equals(password)) {
-                    System.out.println("Login successful!");
-                    return true;
-                }
-                else{
-                    System.out.println("Incorrect email address or password.");
-                    return false;
+            // if (doctors.contains(email)) {
+            //     Doctor doctor = doctors.get(email);
+            //     if (doctor.getPassword().equals(password)) {
+            //         System.out.println("Login successful!");
+            //         return true;
+            //     }
+            //     else{
+            //         System.out.println("Incorrect email address or password.");
+            //         return false;
+            //     }
+            // } else
+            for (Patient patient : patients) {
+                if (patient.getEmail().equalsIgnoreCase(email)) {
+                    if (patient.getPassword().equals(password)) {
+                        return true;
+                    } else {
+                        throw new IllegalArgumentException("The password does not match the email address");
+                    }
                 }
             }
-            else{
-                System.out.println("Incorrect email address or password.");
-                return false;
-            }
+            throw new IllegalArgumentException("There is no patient with this email");
     }
 
 
@@ -95,8 +153,8 @@ public class Hospital {
 
 
 
-    public boolean isAccountValid(String email, String password, String UserType) {
-        if (isEmailValid(email) && isPasswordValid(password) && isInputValid(UserType)) {
+    public boolean isAccountValid(String email, String password) {
+        if (isEmailValid(email) && isPasswordValid(password) ) {
             return true;
         }
         else{
@@ -175,7 +233,7 @@ public class Hospital {
                 // "_" = 95 ,"-" = 45
 
 
-                // check is the cur char are in the above mentioned range
+                // check is the cur char are in the above mentioned arange
                 if(!((cur>=48 && cur<=57) || (cur>=65 && cur<=90) || (cur>=97 && cur<=122) || cur == 95 || cur == 45)){
                     return false;
                 }  
@@ -206,6 +264,5 @@ public class Hospital {
             }
         }
 
-
-
+      
 }

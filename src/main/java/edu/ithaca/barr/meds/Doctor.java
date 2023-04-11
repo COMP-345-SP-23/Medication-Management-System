@@ -1,23 +1,25 @@
 package edu.ithaca.barr.meds;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Doctor {
-    
+    Hospital hospital = new Hospital();
     String email;
     String password;
 
-    public Doctor(String email, String password){
+    public Doctor(String email, String password,Hospital hospital){
         this.email = email;
         this.password = password;
+        this.hospital = hospital;
+        
     }
 
 
-    Hospital hospital = new Hospital();
+    
 
-    public void addMedication(String name , int id , double dosage, int frequency){
-        Medication medication = new Medication(name,id,dosage,frequency);
-        hospital.medications.add(medication);
+    public void addMedication(String name ){
+        hospital.addToMedications(name);
     }
 
     public void deleteMedication(int medId){
@@ -29,9 +31,9 @@ public class Doctor {
 
    
     //deletes the medication with the indicated Id and creates another one with the same id
-    public void updateMedication(String name, int id, double dosage, int frequency){
+    public void updateMedication(String name, int id){
         deleteMedication(id);
-        addMedication(name, id, dosage, frequency);
+        addMedication(name);
 
     }
     public String getEmail(){
@@ -49,22 +51,22 @@ public class Doctor {
 */
 public void prescribeMedication(int patientId, int medicationId, double dosage, int frequency) {
     Medication medication = hospital.searchMedication(medicationId);
-    //Patient patient = hospital.searchPatient(patientId);
+    Patient patient = hospital.searchPatient(patientId);
 
     if (medication == null) {
         throw new IllegalArgumentException("Invalid medication ID.");
     }
 
-    /*if (patient == null) {
+    if (patient == null) {
         throw new IllegalArgumentException("Patient not found.");
-    }*/
+    }
 
     HashMap<String, Object> prescription = new HashMap<String, Object>();
     prescription.put("medication", medication);
-   // prescription.put("patient", patient);
+    prescription.put("patient", patient);
     prescription.put("dosage", dosage);
     prescription.put("frequency", frequency);
 
-    //hospital.addToPrescriptionList(prescription);
+    hospital.addToPrescriptionList(prescription);
 }
 }

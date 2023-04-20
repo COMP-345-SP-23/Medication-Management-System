@@ -3,23 +3,31 @@ package edu.ithaca.barr.meds;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import javax.lang.model.util.ElementScanner14;
+
 public class Doctor {
     Hospital hospital = new Hospital();
     String email;
     String password;
 
+    
     public Doctor(String email, String password,Hospital hospital){
         this.email = email;
         this.password = password;
         this.hospital = hospital;
-        
+          
     }
 
-
+    public void addMedication(String name, int quantity){
+        boolean found = false;
+        for(Medication medication : hospital.medications){
+            if(medication.getName().equals(name))
+                {//medication.add(quantity);
+                found = true;}
+        }
+        if(found==false)
+            hospital.addToMedications(name);
     
-
-    public void addMedication(String name ){
-        hospital.addToMedications(name);
     }
 
     public void deleteMedication(int medId){
@@ -30,11 +38,11 @@ public class Doctor {
     }
 
    
-    //deletes the medication with the indicated Id and creates another one with the same id
-    public void updateMedication(String name, int id){
+    /*deletes the medication with the indicated Id and creates another one with the 
+    same id and updates the name and the quantity */
+    public void updateMedication(String name, int id,int quantity){
         deleteMedication(id);
-        addMedication(name);
-
+        addMedication(name,quantity);
     }
     public String getEmail(){
         return email;
@@ -49,24 +57,40 @@ public class Doctor {
     *addToPrescriptionList that adds all the prescribed medications to an arraylist
 
 */
-public void prescribeMedication(int patientId, int medicationId, double dosage, int frequency) {
+public void prescribeMedication(int patientId, int medicationId, double dosage, int frequency,int totalAmount,int amountPerDay) {
     Medication medication = hospital.searchMedication(medicationId);
     Patient patient = hospital.searchPatient(patientId);
+    HashMap<String, Object> prescription = new HashMap<String, Object>();
 
     if (medication == null) {
         throw new IllegalArgumentException("Invalid medication ID.");
     }
 
+    
     if (patient == null) {
         throw new IllegalArgumentException("Patient not found.");
     }
+    
+    if(hospital.searchMedicationForPatient(medicationId, patientId)==null){
+       
+        prescription.put("medication", medication);
+        prescription.put("patient", patient);
+        prescription.put("dosage", dosage);
+        prescription.put("frequency", frequency);
+        prescription.put("TotalAmount",totalAmount);
+        prescription.put("amountPerDay",amountPerDay);
+        hospital.addToPrescriptionList(prescription);}
 
-    HashMap<String, Object> prescription = new HashMap<String, Object>();
-    prescription.put("medication", medication);
-    prescription.put("patient", patient);
-    prescription.put("dosage", dosage);
-    prescription.put("frequency", frequency);
+    
+    // else{
+    //     HashMap<String, Object> prescribed = hospital.searchMedicationForPatient(medicationId,patientId);
+    //     if(prescribed.get("TotalAmount")==0){
+    //     prescribed.put("TotalAmount",prescribed.get("TotalAmount") + totalAmount);
+    //     prescribed.put("amountPerDay",amountPerDay);}
+    //     else
+    //         throw new IllegalArgumentException("The patient is already taking the medication");
+    // }
 
-    hospital.addToPrescriptionList(prescription);
+
 }
 }

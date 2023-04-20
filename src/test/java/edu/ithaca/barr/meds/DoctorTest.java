@@ -19,7 +19,7 @@ public class DoctorTest {
         hospital.addToMedications("Med1");
 
         // Test prescribing medication
-        doctor.prescribeMedication(hospital.getPatients().get(0).getId(), hospital.getMedications().get(0).getId(), 2.5, 3);
+        doctor.prescribeMedication(hospital.getPatients().get(0).getId(), hospital.getMedications().get(0).getId(), 2.5, 3,10,2);
 
         // Check if the prescription was added to the prescription list in the hospital
         assertTrue(hospital.getPrescribedMedications().size() > 0);
@@ -46,7 +46,7 @@ public class DoctorTest {
 
         // Test prescribing medication with invalid medication ID
         assertThrows(IllegalArgumentException.class, () -> {
-            doctor.prescribeMedication(hospital.getPatients().get(0).getId(), 100, 2.5, 3);
+            doctor.prescribeMedication(hospital.getPatients().get(0).getId(), 100, 2.5, 3,10,2);
         });
     }
 
@@ -61,7 +61,7 @@ public class DoctorTest {
 
         // Test prescribing medication with invalid patient ID
         assertThrows(IllegalArgumentException.class, () -> {
-            doctor.prescribeMedication(100, hospital.getMedications().get(0).getId(), 2.5, 3);
+            doctor.prescribeMedication(100, hospital.getMedications().get(0).getId(), 2.5, 3,10,2);
         });
     }
 

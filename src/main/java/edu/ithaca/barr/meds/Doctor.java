@@ -53,10 +53,11 @@ public class Doctor {
     *addToPrescriptionList that adds all the prescribed medications to an arraylist
 
 */
-public void prescribeMedication(int patientId, int medicationId, double dosage, int frequency) {
+public void prescribeMedication(int patientId, int medicationId, double dosage, int frequency,int totalAmount,int amountPerDay) {
     Medication medication = hospital.searchMedication(medicationId);
     Patient patient = hospital.searchPatient(patientId);
-    
+
+    HashMap<String, Object> prescription = new HashMap<String, Object>();
 
     if (medication == null) {
         throw new IllegalArgumentException("Invalid medication ID.");
@@ -67,15 +68,26 @@ public void prescribeMedication(int patientId, int medicationId, double dosage, 
         throw new IllegalArgumentException("Patient not found.");
     }
     
+    if(hospital.searchMedicationForPatient(medicationId, patientId)==null){
+       
+        prescription.put("medication", medication);
+        prescription.put("patient", patient);
+        prescription.put("dosage", dosage);
+        prescription.put("frequency", frequency);
+        prescription.put("TotalAmount",totalAmount);
+        prescription.put("amountPerDay",amountPerDay);
+        hospital.addToPrescriptionList(prescription);}
 
-    HashMap<String, Object> prescription = new HashMap<String, Object>();
-    prescription.put("medication", medication);
-    prescription.put("patient", patient);
-    prescription.put("patient", patient);
-    prescription.put("dosage", dosage);
-    prescription.put("frequency", frequency);
-
-    hospital.addToPrescriptionList(prescription);
     
+    // else{
+    //     HashMap<String, Object> prescribed = hospital.searchMedicationForPatient(medicationId,patientId);
+    //     if(prescribed.get("TotalAmount")==0){
+    //     prescribed.put("TotalAmount",prescribed.get("TotalAmount") + totalAmount);
+    //     prescribed.put("amountPerDay",amountPerDay);}
+    //     else
+    //         throw new IllegalArgumentException("The patient is already taking the medication");
+    // }
+
+
 }
 }

@@ -47,7 +47,7 @@ Link to UML Diagrams:
 https://drive.google.com/file/d/173eo1GQB0OruaIJAZN5AbeuT8WhMS_RH/view?usp=sharing
 
 Sprint 2 Goal: 
-<<add goal here>>
+The nurse and patient should be able to interact with the medications, note whether or not it has been taken, and ensure we as users can interact with the product.
 
 Link to Sprint-2 Demo Template: 
 <<add link here>>

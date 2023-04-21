@@ -257,7 +257,7 @@ public class Hospital {
         }
 
 
-        private boolean isPasswordValid(String password) {
+        public boolean isPasswordValid(String password) {
             if(password.length()>0 && !password.equals("") && !password.equals(" ") && password != null){
                 return true;
             }else{

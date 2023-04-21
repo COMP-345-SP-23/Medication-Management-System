@@ -68,10 +68,15 @@ public class UI {
                 int freq= scnr.nextInt();
                 System.out.println("Enter dosage:");
                 double dosage=scnr.nextDouble();
+                System.out.println("Enter totalAmount: ");
+                int totAmount=scnr.nextInt();
+
+                System.out.println("Enter amount per day:");
+                int perDay = scnr.nextInt();
 
                 // doctor.prescribeMedication(pId, medId, dosage, freq);
                 try {
-                    doctor.prescribeMedication(pId, medId, dosage, freq);
+                    doctor.prescribeMedication(pId,medId,dosage,freq,totAmount,perDay);
                     System.out.println("Medication prescribed successfully.");
                 } catch (IllegalArgumentException e) {
                     System.out.println(e.getMessage());
@@ -121,7 +126,7 @@ public class UI {
           
                 System.out.println("Email is invalid try again");                
           }
-          
+
           System.out.println("Create Password:");
           String password =scnr.next();
           try{

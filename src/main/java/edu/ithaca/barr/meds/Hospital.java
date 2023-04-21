@@ -265,6 +265,10 @@ public class Hospital {
             }
         }
 
+        public Object searchMedicationForPatient(int medicationId, int patientId) {
+            return null;
+        }
+
       
 
 

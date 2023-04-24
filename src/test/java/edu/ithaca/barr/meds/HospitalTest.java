@@ -116,7 +116,7 @@ public class HospitalTest {
         // Verify that the correct medication is returned
         assertEquals("Aspirin", medication.getName());
     }
-   
+  
     // @Test
     // void isEmailValidTest(){
     //     Hospital DoctorAccount = new Hospital();

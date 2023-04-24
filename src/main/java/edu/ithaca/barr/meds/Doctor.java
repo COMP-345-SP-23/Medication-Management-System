@@ -3,8 +3,6 @@ package edu.ithaca.barr.meds;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import javax.lang.model.util.ElementScanner14;
-
 public class Doctor {
     Hospital hospital = new Hospital();
     String email;
@@ -18,15 +16,11 @@ public class Doctor {
           
     }
 
-    public void addMedication(String name, int quantity){
-        boolean found = false;
-        for(Medication medication : hospital.medications){
-            if(medication.getName().equals(name))
-                {//medication.add(quantity);
-                found = true;}
-        }
-        if(found==false)
-            hospital.addToMedications(name);
+
+    
+
+    public void addMedication(String name ){
+        hospital.addToMedications(name);
     
     }
 
@@ -38,11 +32,13 @@ public class Doctor {
     }
 
    
-    /*deletes the medication with the indicated Id and creates another one with the 
-    same id and updates the name and the quantity */
-    public void updateMedication(String name, int id,int quantity){
+    //deletes the medication with the indicated Id and creates another one with the same id
+  
+    public void updateMedication(String name, int id){
         deleteMedication(id);
-        addMedication(name,quantity);
+        addMedication(name);
+        addMedication(name);
+
     }
     public String getEmail(){
         return email;
@@ -60,6 +56,7 @@ public class Doctor {
 public void prescribeMedication(int patientId, int medicationId, double dosage, int frequency,int totalAmount,int amountPerDay) {
     Medication medication = hospital.searchMedication(medicationId);
     Patient patient = hospital.searchPatient(patientId);
+
     HashMap<String, Object> prescription = new HashMap<String, Object>();
 
     if (medication == null) {

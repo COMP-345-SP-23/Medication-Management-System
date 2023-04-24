@@ -12,31 +12,6 @@ public class Patient {
     private String password;
     ArrayList<Medication> prescribedMeds;
     ArrayList<Medication> currentMeds;
-    public Patient(String email, String password) {
-        this.email = email;
-        this.password = password;
-    }
-    public int getId(){
-        return id;
-    }
-
-    public String getFirstName(){
-        return firstname;
-    }
-
-    public String getLastName(){
-        return lastname;
-    }
-    
-    public String getEmail(){
-        return email;
-    }
-    public String getPassword(){
-        return password;
-    }
-    
-    
-
     public Patient(String firstname, String lastname, int id, String email, String password) {
         this.firstname = firstname;
         this.lastname = lastname;
@@ -56,6 +31,26 @@ public class Patient {
             currentMeds.add(med);
         }
     }
+    public int getId(){
+        return id;
+    }
+
+    public String getFirstName(){
+        return firstname;
+    }
+
+    public String getLastName(){
+        return lastname;
+    }
+    
+    public String getEmail(){
+        return email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+    
 
     public boolean isPrescribed(Medication med) {
         if (prescribedMeds.contains(med)) {

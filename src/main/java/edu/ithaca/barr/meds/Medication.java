@@ -11,11 +11,11 @@ public class Medication {
    
     
     
-    public Medication(String name, int id, int quantity, ArrayList<Integer> history){
+    public Medication(String name, int id, int quantity){
         this.name = name;
         this.id = id;
         this.quantity = quantity;
-        this.history = history;
+        this.history = new ArrayList<>();
        
     }
 

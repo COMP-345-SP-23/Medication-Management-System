@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Doctor {
+
     Hospital hospital = new Hospital();
     String email;
     String password;
@@ -19,8 +20,8 @@ public class Doctor {
 
     
 
-    public void addMedication(String name ){
-        hospital.addToMedications(name);
+    public void addMedication(String name, int quantity ){
+        hospital.addToMedications(name,quantity);
     
     }
 
@@ -34,10 +35,13 @@ public class Doctor {
    
     //deletes the medication with the indicated Id and creates another one with the same id
   
-    public void updateMedication(String name, int id){
-        deleteMedication(id);
-        addMedication(name);
-        addMedication(name);
+    public void updateMedication(String name, int id,int quantity){
+        if(hospital.searchMedication(id)== null){
+            throw new IllegalArgumentException("A medication with this id does not exist");
+        }
+        else
+        {deleteMedication(id);
+        addMedication(name,quantity);}
 
     }
     public String getEmail(){

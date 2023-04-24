@@ -16,7 +16,7 @@ public class DoctorTest {
         hospital.createPatient("John", "Doe", "john@example.com","Password123");
 
         // Add a medication to the hospital
-        hospital.addToMedications("Med1");
+        hospital.addToMedications("Med1",90);
 
         // Test prescribing medication
         doctor.prescribeMedication(hospital.getPatients().get(0).getId(), hospital.getMedications().get(0).getId(), 2.5, 3,10,2);
@@ -57,7 +57,7 @@ public class DoctorTest {
         Doctor doctor = new Doctor("doctor@example.com", "password", hospital);
 
         // Add a medication to the hospital
-        hospital.addToMedications("Asprin");
+        hospital.addToMedications("Asprin",10);
 
         // Test prescribing medication with invalid patient ID
         assertThrows(IllegalArgumentException.class, () -> {

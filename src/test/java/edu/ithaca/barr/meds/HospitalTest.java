@@ -105,7 +105,9 @@ public class HospitalTest {
     //     assertTrue(DoctorAccount.isEmailValid( "a_b@b.com")); // valid placement of underscore
     //     assertFalse(DoctorAccount.isEmailValid(""));         // empty string
     //     assertTrue(DoctorAccount.isEmailValid( "a.b@b.com")); // Valid Placement of dot
-//     assertFalse(DoctorAccount.isEmailValid( "a-@b.com")); //Tests there is no special character before the @
+
+
+    //     assertFalse(DoctorAccount.isEmailValid( "a-@b.com")); //Tests there is no special character before the @
     //     assertFalse(DoctorAccount.isEmailValid( "a..b@b.com")); //Tests that there are no special characters next to each other
     //     assertFalse(DoctorAccount.isEmailValid( ".a@b.com"));  //Tests that email doesn't start with a special character
     //     assertFalse(DoctorAccount.isEmailValid( "a#b@b.com")); //Tests there there are no invalid characters

@@ -68,7 +68,7 @@ public void prescribeMedication(int patientId, int medicationId, double dosage, 
         throw new IllegalArgumentException("Patient not found.");
     }
     
-    if(hospital.searchMedicationForPatient(medicationId, patientId)==null){
+   // if(hospital.searchMedicationForPatient(medicationId, patientId)==null){
        
         prescription.put("medication", medication);
         prescription.put("patient", patient);
@@ -76,7 +76,7 @@ public void prescribeMedication(int patientId, int medicationId, double dosage, 
         prescription.put("frequency", frequency);
         prescription.put("TotalAmount",totalAmount);
         prescription.put("amountPerDay",amountPerDay);
-        hospital.addToPrescriptionList(prescription);}
+        hospital.addToPrescriptionList(prescription);//}
 
     
     // else{
@@ -90,4 +90,8 @@ public void prescribeMedication(int patientId, int medicationId, double dosage, 
 
 
 }
+
+// public ArrayList<Integer> getMedHistory(int medId){
+//    return hospital.searchMedication(medId).getHistory;
+// }
 }

@@ -20,6 +20,6 @@ public class MedicationTest {
         Medication med = new Medication("Aspirin", 123);
         assertEquals(123, med.getId());
     }
- 
+   
     
 }

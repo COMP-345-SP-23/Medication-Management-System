@@ -96,7 +96,11 @@ public class UI {
                 System.out.println("Enter Medication name: ");
                 String name= scnr.next();
 
-                doctor.addMedication(name);
+                System.out.println("Enter medication Quantity: ");
+                int quantity = scnr.nextInt();
+
+
+                doctor.addMedication(name,quantity);
                 System.out.println("Medication  added successfully!");
 
                 break;
@@ -107,7 +111,10 @@ public class UI {
                 System.out.println("Enter medication ID: ");
                 int id = scnr.nextInt();
 
-                doctor.updateMedication(Medname, id);
+                System.out.println("Enter medication Quantity: ");
+                quantity = scnr.nextInt();
+
+                doctor.updateMedication(Medname, id,quantity);
                 System.out.println("Medicine successfully updated!");
                 break;
             }

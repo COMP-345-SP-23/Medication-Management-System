@@ -1,3 +1,4 @@
+
 package edu.ithaca.barr.meds;
 import org.junit.jupiter.api.Test;
 
@@ -11,8 +12,8 @@ public class HospitalTest {
     public void testAddToMedications() {
         Hospital hospital = new Hospital();
 
-        hospital.addToMedications("Medication1");
-        hospital.addToMedications("Medication2");
+        hospital.addToMedications("Medication1",9);
+        hospital.addToMedications("Medication2",8);
 
         assertEquals(2, hospital.getMedications().size());
     }
@@ -21,8 +22,8 @@ public class HospitalTest {
     public void testSearchMedication() {
         Hospital hospital = new Hospital();
 
-        hospital.addToMedications("Medication1");
-        hospital.addToMedications("Medication2");
+        hospital.addToMedications("Medication1",78);
+        hospital.addToMedications("Medication2",65);
 
         Medication medication1 = hospital.searchMedication(1);
         Medication medication2 = hospital.searchMedication(2);
@@ -37,8 +38,8 @@ public class HospitalTest {
     public void testAddToPrescriptionList() {
         Hospital hospital = new Hospital();
 
-        hospital.addToMedications("Medication1");
-        hospital.addToMedications("Medication2");
+        hospital.addToMedications("Medication1",56);
+        hospital.addToMedications("Medication2",70);
 
         HashMap<String, Object> prescription1 = new HashMap<>();
         prescription1.put("medication", hospital.getMedications().get(0));
@@ -62,8 +63,8 @@ public class HospitalTest {
     public void testSearchPrescriptionByPatientId() {
         Hospital hospital = new Hospital();
 
-        hospital.addToMedications("Medication1");
-        hospital.addToMedications("Medication2");
+        hospital.addToMedications("Medication1",90);
+        hospital.addToMedications("Medication2",80);
 
         HashMap<String, Object> prescription1 = new HashMap<>();
         prescription1.put("medication", hospital.getMedications().get(0));

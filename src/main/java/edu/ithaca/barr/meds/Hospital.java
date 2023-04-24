@@ -47,9 +47,9 @@ public class Hospital {
     }
 
     // Method to add Medication to the list of Medication objects
-    public void addToMedications(String name) {
+    public void addToMedications(String name, int quantity ) {
         int id = medications.size() + 1;
-        Medication medication = new Medication(name, id);
+        Medication medication = new Medication(name, id,quantity);
         medications.add(medication);
     }
 
@@ -132,6 +132,22 @@ public class Hospital {
     }
    
 
+
+
+    // public boolean createDoctorAccount(String email, String password, String UserType) {
+    //     if(isAccountValid(email, password, password)){
+    //         Doctor newDoctor = new Doctor(email, password);
+    //         // Add new doctor account to the HashMap
+    //         doctors.put(email, newDoctor);
+    //         return true;
+    //     }
+    //     else{
+    //         System.out.println("Account information invalid");
+    //         return false;
+    //     }
+    // }
+
+
     public boolean login(String email, String password) {
             // Check if email address is in the HashMap
             // if (doctors.contains(email)) {
@@ -177,7 +193,7 @@ public class Hospital {
 
 
         if (indexOfAT == -1){
-             throw new IllegalArgumentException("must contain @ symbol");
+            return false;
         }
         else {
            
@@ -196,18 +212,18 @@ public class Hospital {
 
                 // check is the cur char are in the above mentioned range
                 if(!((cur>=48 && cur<=57) || (cur>=65 && cur<=90) || (cur>=97 && cur<=122) || cur == 95 || cur == 46 || cur == 45)){
-                     throw new IllegalArgumentException("There is no patient with this email");
+                    return false;
                 }  
                 else{
                     if(cur == 95 || cur == 46 || cur == 45){
                         // check if "_" "." "-" are at the beginning of email address
                         if(x == 0 ){
-                            throw new IllegalArgumentException("");
+                            return false;
                         }
                         //check if the "_" "." "-" are followed by a letter or number
                         int next = email.charAt(x+1);
                         if(!((next>=48 && next<=57) || (next>=65 && next<=90) || (next>=97 && next<=122))){
-                            throw new IllegalArgumentException("");
+                            return false;
                         }
                     }
                 }
@@ -219,12 +235,12 @@ public class Hospital {
             // check the occurrences of "." Domain
             String domain = email.substring(indexOfAT, email.length());
             if(domain.length()-domain.replace(".", "").length() != 1){
-                 throw new IllegalArgumentException("Doesn't contain '.' ");
+                return false;
             }
            
             // check last portion of Domain
             if(domain.length()-domain.lastIndexOf(".")-1 < 2){
-                throw new IllegalArgumentException("Invalid email");
+                return false;
             }
            
 
@@ -244,7 +260,7 @@ public class Hospital {
 
                 // check is the cur char are in the above mentioned range
                 if(!((cur>=48 && cur<=57) || (cur>=65 && cur<=90) || (cur>=97 && cur<=122) || cur == 95 || cur == 45)){
-                     throw new IllegalArgumentException("Password must include 1 number,1 capital letter, 1 lowercase letter, - and _");
+                    return false;
                 }  
 
 
@@ -260,7 +276,7 @@ public class Hospital {
             if(input.length()>0 && !input.equals("") && !input.equals(" ") && input != null){
                 return true;
             }else{
-                throw new IllegalArgumentException("");
+                return false;  
                 }
         }
 
@@ -269,6 +285,14 @@ public class Hospital {
             if(password.length()>0 && !password.equals("") && !password.equals(" ") && password != null){
                 return true;
             }else{
-                 throw new IllegalArgumentException("Password is Invalid");  
+                return false;  
             }
+
         }}
+
+        }
+
+
+
+}
+

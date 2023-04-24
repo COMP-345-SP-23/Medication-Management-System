@@ -95,7 +95,28 @@ public class HospitalTest {
 
         assertEquals(2, hospital.getPatients().size());
     }
+    @Test
+    public void testSearchMedicationForPatient() {
+        // Create a new Hospital instance
+        Hospital hospital = new Hospital();
     
+        // Add a new medication to the hospital's list of medications
+        hospital.addToMedications("Aspirin");
+    
+        // Create a new patient and add them to the hospital's list of patients
+        hospital.createPatient("John", "Doe", "johndoe@example.com", "password");
+    
+        // Create a new Doctor and add a prescription for the patient
+        Doctor doctor = new Doctor("doctor@example.com", "password", hospital);
+        doctor.prescribeMedication(1, 1, 10.0, 2, 20, 2);
+    
+        // Search for the medication for the patient
+        Medication medication = hospital.searchMedicationForPatient(1, 1);
+    
+        // Verify that the correct medication is returned
+        assertEquals("Aspirin", medication.getName());
+    }
+   
     // @Test
     // void isEmailValidTest(){
     //     Hospital DoctorAccount = new Hospital();

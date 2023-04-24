@@ -120,9 +120,17 @@ public class Hospital {
     //         return false;
     //     }
     // }
+    public Medication searchMedicationForPatient(int medId, int patientId) {
+        for (HashMap<String, Object> prescription : prescriptionList) {
+            Patient patient = (Patient) prescription.get("patient");
+            Medication medication = (Medication) prescription.get("medication");
+            if (patient.getId() == patientId && medication.getId() == medId) {
+                return medication;
+            }
+        }
+        return null;
+    }
    
-
-
 
     public boolean login(String email, String password) {
             // Check if email address is in the HashMap
@@ -263,14 +271,4 @@ public class Hospital {
             }else{
                  throw new IllegalArgumentException("Password is Invalid");  
             }
-        }
-
-        public Object searchMedicationForPatient(int medicationId, int patientId) {
-            return null;
-        }
-
-      
-
-
-
-}
+        }}

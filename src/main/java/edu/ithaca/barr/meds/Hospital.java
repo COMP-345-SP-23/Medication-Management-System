@@ -77,6 +77,30 @@ public class Hospital {
         return null;
     }
 
+    //Method to search a specific prescription for a patient
+    public HashMap<String, Object> searchMedicationForPatient(int medId, int patientId) {
+        for (HashMap<String, Object> prescription : prescriptionList) {
+            Patient patient = (Patient) prescription.get("patient");
+            Medication medication = (Medication) prescription.get("medication");
+            if (patient.getId() == patientId && medication.getId() == medId) {
+                return prescription;
+            }
+        }
+        return null;
+    }
+    //Method to search a list of prescriptions for a patient
+    public ArrayList<HashMap<String, Object>> searchPrescriptionForPatient(int patientId) {
+        ArrayList<HashMap<String, Object>> prescriptions = new ArrayList<HashMap<String, Object>>();
+    
+        for (HashMap<String, Object> prescription : prescriptionList) {
+            Patient patient = (Patient) prescription.get("patient");
+            if (patient.getId() == patientId) {
+                prescriptions.add(prescription);
+            }
+        }
+    
+        return prescriptions;
+    }
     // Method to add a prescription to the list of prescription information as HashMap objects
     public void addToPrescriptionList(HashMap<String, Object> prescription) {
         prescriptionList.add(prescription);
@@ -108,59 +132,8 @@ public class Hospital {
 
 
 
-    // public boolean createDoctorAccount(String email, String password, String UserType) {
-    //     if(isAccountValid(email, password, password)){
-    //         Doctor newDoctor = new Doctor(email, password);
-    //         // Add new doctor account to the HashMap
-    //         doctors.put(email, newDoctor);
-    //         return true;
-    //     }
-    //     else{
-    //         System.out.println("Account information invalid");
-    //         return false;
-    //     }
-    // }
-    public Medication searchMedicationForPatient(int medId, int patientId) {
-        for (HashMap<String, Object> prescription : prescriptionList) {
-            Patient patient = (Patient) prescription.get("patient");
-            Medication medication = (Medication) prescription.get("medication");
-            if (patient.getId() == patientId && medication.getId() == medId) {
-                return medication;
-            }
-        }
-        return null;
-    }
-   
-
-
-
-    // public boolean createDoctorAccount(String email, String password, String UserType) {
-    //     if(isAccountValid(email, password, password)){
-    //         Doctor newDoctor = new Doctor(email, password);
-    //         // Add new doctor account to the HashMap
-    //         doctors.put(email, newDoctor);
-    //         return true;
-    //     }
-    //     else{
-    //         System.out.println("Account information invalid");
-    //         return false;
-    //     }
-    // }
-
-
     public boolean login(String email, String password) {
-            // Check if email address is in the HashMap
-            // if (doctors.contains(email)) {
-            //     Doctor doctor = doctors.get(email);
-            //     if (doctor.getPassword().equals(password)) {
-            //         System.out.println("Login successful!");
-            //         return true;
-            //     }
-            //     else{
-            //         System.out.println("Incorrect email address or password.");
-            //         return false;
-            //     }
-            // } else
+           
             for (Patient patient : patients) {
                 if (patient.getEmail().equalsIgnoreCase(email)) {
                     if (patient.getPassword().equals(password)) {
@@ -287,12 +260,8 @@ public class Hospital {
             }else{
                 return false;  
             }
-
-        }}
-
         }
 
-
+       
 
 }
-

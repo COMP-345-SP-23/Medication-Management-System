@@ -102,7 +102,7 @@ public class HospitalTest {
         Hospital hospital = new Hospital();
     
         // Add a new medication to the hospital's list of medications
-        hospital.addToMedications("Aspirin");
+        hospital.addToMedications("Aspirin",10);
     
         // Create a new patient and add them to the hospital's list of patients
         hospital.createPatient("John", "Doe", "johndoe@example.com", "password");
@@ -112,7 +112,8 @@ public class HospitalTest {
         doctor.prescribeMedication(1, 1, 10.0, 2, 20, 2);
     
         // Search for the medication for the patient
-        Medication medication = hospital.searchMedicationForPatient(1, 1);
+        HashMap<String,Object> prescription = hospital.searchMedicationForPatient(1, 1);
+        Medication medication = (Medication)prescription.get("medication");
     
         // Verify that the correct medication is returned
         assertEquals("Aspirin", medication.getName());

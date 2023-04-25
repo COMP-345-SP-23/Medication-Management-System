@@ -142,10 +142,14 @@ public void testSearchMedicationForPatient() {
 public void testSearchPrescriptionForPatient()  {
         Hospital hospital = new Hospital();
     
+
         // Add two medications to the hospital's list of medications
         hospital.addToMedications("Medication1", 78);
         hospital.addToMedications("Medication2", 65);
-    
+
+        // Add a new medication to the hospital's list of medications
+        hospital.addToMedications("Aspirin",10);
+
         // Add three prescriptions to the hospital's list of prescriptions
         HashMap<String, Object> prescription1 = new HashMap<>();
         prescription1.put("medication", hospital.getMedications().get(0));
@@ -161,12 +165,18 @@ public void testSearchPrescriptionForPatient()  {
         prescription2.put("frequency", 2);
         hospital.addToPrescriptionList(prescription2);
     
+
         HashMap<String, Object> prescription3 = new HashMap<>();
         prescription3.put("medication", hospital.getMedications().get(0));
         prescription3.put("patient", new Patient("Jane", "Doe", 2, "jane.doe@example.com", "password"));
         prescription3.put("dosage", 300);
         prescription3.put("frequency", 3);
         hospital.addToPrescriptionList(prescription3);
+
+        // Search for the medication for the patient
+        HashMap<String,Object> prescription = hospital.searchMedicationForPatient(1, 1);
+        Medication medication = (Medication)prescription.get("medication");
+
     
         // Search for prescriptions for patient 1 and verify the results
         ArrayList<HashMap<String, Object>> foundPrescriptions1 = hospital.searchPrescriptionForPatient(1);

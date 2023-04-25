@@ -101,6 +101,7 @@ public class Hospital {
     
         return prescriptions;
     }
+
     // Method to add a prescription to the list of prescription information as HashMap objects
     public void addToPrescriptionList(HashMap<String, Object> prescription) {
         prescriptionList.add(prescription);

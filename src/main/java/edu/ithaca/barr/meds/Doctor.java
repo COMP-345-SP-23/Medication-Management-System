@@ -8,6 +8,8 @@ public class Doctor {
     Hospital hospital = new Hospital();
     String email;
     String password;
+    
+    private ArrayList<Patient> patientsNotTakingMedProperly = new ArrayList<>();
 
     
     public Doctor(String email, String password,Hospital hospital){
@@ -72,7 +74,7 @@ public void prescribeMedication(int patientId, int medicationId, double dosage, 
         throw new IllegalArgumentException("Patient not found.");
     }
     
-   // if(hospital.searchMedicationForPatient(medicationId, patientId)==null){
+    if(hospital.searchMedicationForPatient(medicationId, patientId)==null){
        
         prescription.put("medication", medication);
         prescription.put("patient", patient);
@@ -80,22 +82,34 @@ public void prescribeMedication(int patientId, int medicationId, double dosage, 
         prescription.put("frequency", frequency);
         prescription.put("TotalAmount",totalAmount);
         prescription.put("amountPerDay",amountPerDay);
-        hospital.addToPrescriptionList(prescription);//}
+        hospital.addToPrescriptionList(prescription);}
 
     
-    // else{
-    //     HashMap<String, Object> prescribed = hospital.searchMedicationForPatient(medicationId,patientId);
-    //     if(prescribed.get("TotalAmount")==0){
-    //     prescribed.put("TotalAmount",prescribed.get("TotalAmount") + totalAmount);
-    //     prescribed.put("amountPerDay",amountPerDay);}
-    //     else
-    //         throw new IllegalArgumentException("The patient is already taking the medication");
-    // }
+    else{
+        HashMap<String, Object> prescribed = hospital.searchMedicationForPatient(medicationId,patientId);
+        if((int)prescribed.get("TotalAmount")==0){
+        prescribed.put("TotalAmount",(int)prescribed.get("TotalAmount") + totalAmount);
+        prescribed.put("amountPerDay",amountPerDay);}
+        else
+            throw new IllegalArgumentException("The patient is already taking the medication");
+    }
 
 
 }
+ public ArrayList<Integer> getMedHistory(int medId){
+   return hospital.searchMedication(medId).getHistory();
+ }
 
-// public ArrayList<Integer> getMedHistory(int medId){
-//    return hospital.searchMedication(medId).getHistory;
-// }
+
+public ArrayList<Patient> getPatientsNotTakingMedProperly(){
+    for(Patient patient : hospital.getPatients()){
+        if(patient.getNotTakenProperly()==true){
+            patientsNotTakingMedProperly.add(patient);
+        }
+    }
+    return patientsNotTakingMedProperly;
+}
+
+
+
 }

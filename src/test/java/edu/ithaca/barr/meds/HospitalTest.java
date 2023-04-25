@@ -2,6 +2,7 @@
 package edu.ithaca.barr.meds;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -97,29 +98,112 @@ public class HospitalTest {
         assertEquals(2, hospital.getPatients().size());
     }
     @Test
-    public void testSearchMedicationForPatient() {
-        // Create a new Hospital instance
+public void testSearchMedicationForPatient() {
+    Hospital hospital = new Hospital();
+
+    // Add two medications to the hospital's list of medications
+    hospital.addToMedications("Medication1", 78);
+    hospital.addToMedications("Medication2", 65);
+
+    // Add two prescriptions to the hospital's list of prescriptions
+    HashMap<String, Object> prescription1 = new HashMap<>();
+    prescription1.put("medication", hospital.getMedications().get(0));
+    prescription1.put("patient", new Patient("John", "Doe", 1, "john.doe@example.com", "password"));
+    prescription1.put("dosage", 200);
+    prescription1.put("frequency", 1);
+    hospital.addToPrescriptionList(prescription1);
+
+    HashMap<String, Object> prescription2 = new HashMap<>();
+    prescription2.put("medication", hospital.getMedications().get(1));
+    prescription2.put("patient", new Patient("Jane", "Doe", 2, "jane.doe@example.com", "password"));
+    prescription2.put("dosage", 500);
+    prescription2.put("frequency", 2);
+    hospital.addToPrescriptionList(prescription2);
+
+    // Search for prescription for patient 1 and medication 1 and verify the results
+    HashMap<String, Object> foundPrescription1 = hospital.searchMedicationForPatient(1, 1);
+    assertNotNull(foundPrescription1);
+    assertEquals("Medication1", ((Medication) foundPrescription1.get("medication")).getName());
+    assertEquals(200, foundPrescription1.get("dosage"));
+    assertEquals(1, foundPrescription1.get("frequency"));
+
+    // Search for prescription for patient 2 and medication 2 and verify the results
+    HashMap<String, Object> foundPrescription2 = hospital.searchMedicationForPatient(2, 2);
+    assertNotNull(foundPrescription2);
+    assertEquals("Medication2", ((Medication) foundPrescription2.get("medication")).getName());
+    assertEquals(500, foundPrescription2.get("dosage"));
+    assertEquals(2, foundPrescription2.get("frequency"));
+
+    // Search for prescription for non-existing patient and medication combination and verify the results
+    HashMap<String, Object> foundPrescription3 = hospital.searchMedicationForPatient(3, 1);
+    assertNull(foundPrescription3);
+}
+ @Test
+public void testSearchPrescriptionForPatient()  {
         Hospital hospital = new Hospital();
     
+
+        // Add two medications to the hospital's list of medications
+        hospital.addToMedications("Medication1", 78);
+        hospital.addToMedications("Medication2", 65);
+
         // Add a new medication to the hospital's list of medications
         hospital.addToMedications("Aspirin",10);
+
+        // Add three prescriptions to the hospital's list of prescriptions
+        HashMap<String, Object> prescription1 = new HashMap<>();
+        prescription1.put("medication", hospital.getMedications().get(0));
+        prescription1.put("patient", new Patient("John", "Doe", 1, "john.doe@example.com", "password"));
+        prescription1.put("dosage", 200);
+        prescription1.put("frequency", 1);
+        hospital.addToPrescriptionList(prescription1);
     
-        // Create a new patient and add them to the hospital's list of patients
-        hospital.createPatient("John", "Doe", "johndoe@example.com", "password");
+        HashMap<String, Object> prescription2 = new HashMap<>();
+        prescription2.put("medication", hospital.getMedications().get(1));
+        prescription2.put("patient", new Patient("John", "Doe", 1, "john.doe@example.com", "password"));
+        prescription2.put("dosage", 500);
+        prescription2.put("frequency", 2);
+        hospital.addToPrescriptionList(prescription2);
     
-        // Create a new Doctor and add a prescription for the patient
-        Doctor doctor = new Doctor("doctor@example.com", "password", hospital);
-        doctor.prescribeMedication(1, 1, 10.0, 2, 20, 2);
-    
+
+        HashMap<String, Object> prescription3 = new HashMap<>();
+        prescription3.put("medication", hospital.getMedications().get(0));
+        prescription3.put("patient", new Patient("Jane", "Doe", 2, "jane.doe@example.com", "password"));
+        prescription3.put("dosage", 300);
+        prescription3.put("frequency", 3);
+        hospital.addToPrescriptionList(prescription3);
+
         // Search for the medication for the patient
         HashMap<String,Object> prescription = hospital.searchMedicationForPatient(1, 1);
         Medication medication = (Medication)prescription.get("medication");
+
     
-        // Verify that the correct medication is returned
-        assertEquals("Aspirin", medication.getName());
-    }
-  
-    // @Test
+        // Search for prescriptions for patient 1 and verify the results
+        ArrayList<HashMap<String, Object>> foundPrescriptions1 = hospital.searchPrescriptionForPatient(1);
+        assertNotNull(foundPrescriptions1);
+        assertEquals(2, foundPrescriptions1.size());
+        assertEquals("Medication1", ((Medication) foundPrescriptions1.get(0).get("medication")).getName());
+        assertEquals(200, foundPrescriptions1.get(0).get("dosage"));
+        assertEquals(1, foundPrescriptions1.get(0).get("frequency"));
+        assertEquals("Medication2", ((Medication) foundPrescriptions1.get(1).get("medication")).getName());
+        assertEquals(500, foundPrescriptions1.get(1).get("dosage"));
+        assertEquals(2, foundPrescriptions1.get(1).get("frequency"));
+    
+        // Search for prescriptions for patient 2 and verify the results
+        ArrayList<HashMap<String, Object>> foundPrescriptions2 = hospital.searchPrescriptionForPatient(2);
+        assertNotNull(foundPrescriptions2);
+        assertEquals(1, foundPrescriptions2.size());
+        assertEquals("Medication1", ((Medication) foundPrescriptions2.get(0).get("medication")).getName());
+        assertEquals(300, foundPrescriptions2.get(0).get("dosage"));
+        assertEquals(3, foundPrescriptions2.get(0).get("frequency"));
+    
+        // Search for prescriptions for non-existing patient and verify the results
+        ArrayList<HashMap<String, Object>> foundPrescriptions3 = hospital.searchPrescriptionForPatient(3);
+        assertNotNull(foundPrescriptions3);
+        assertEquals(0, foundPrescriptions3.size());
+    }   
+
+// @Test
     // void isEmailValidTest(){
     //     Hospital DoctorAccount = new Hospital();
     //     assertTrue(DoctorAccount.isEmailValid( "a@b.com"));   // valid email address

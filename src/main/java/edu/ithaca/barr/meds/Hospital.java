@@ -88,6 +88,20 @@ public class Hospital {
         }
         return null;
     }
+    //Method to search a list of prescriptions for a patient
+    public ArrayList<HashMap<String, Object>> searchPrescriptionForPatient(int patientId) {
+        ArrayList<HashMap<String, Object>> prescriptions = new ArrayList<HashMap<String, Object>>();
+    
+        for (HashMap<String, Object> prescription : prescriptionList) {
+            Patient patient = (Patient) prescription.get("patient");
+            if (patient.getId() == patientId) {
+                prescriptions.add(prescription);
+            }
+        }
+    
+        return prescriptions;
+    }
+
     // Method to add a prescription to the list of prescription information as HashMap objects
     public void addToPrescriptionList(HashMap<String, Object> prescription) {
         prescriptionList.add(prescription);

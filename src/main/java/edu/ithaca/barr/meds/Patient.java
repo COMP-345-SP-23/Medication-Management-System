@@ -70,7 +70,12 @@ public class Patient {
             return false;
         }
     }
-
-   
+    public void setFinishedPrescription(boolean done){
+        this.done= done;
+    }
+  public boolean finishMedication(){
+      return done;
+        
+    }
 
 }

@@ -35,16 +35,26 @@ public class Medication {
         return history;
     }
 
-    public void addMedication() {
-
+    public void addMedication(Medication med) {
+        Hospital.medications.add(med);
+        med.updateHistory(med.getQuantity());
     }
 
-    public void reduceMedication() {
+    public void reduceMedication(Medication med) {
+        if (Hospital.medications.contains(med)) {
+            Hospital.medications.remove(med);
 
+            int amount = med.getQuantity();
+            amount -= 2 * amount;
+            med.updateHistory(amount);
+        }
+        else {
+            System.out.println("Medication not found");
+        }
     }
 
     public void updateHistory(int amount) {
-
+        history.add(amount);
     }
     
  

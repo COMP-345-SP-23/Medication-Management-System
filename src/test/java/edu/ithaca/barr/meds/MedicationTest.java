@@ -3,7 +3,6 @@ package edu.ithaca.barr.meds;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class MedicationTest {
@@ -47,17 +46,19 @@ public class MedicationTest {
      */
     @Test
     public void testAddReduceUpdate() {
-        Hospital hospital = new Hospital();
         Medication med = new Medication("Aspirin", 123, 10);
+        ArrayList<Integer> arr1 = new ArrayList<>();
 
-        assertEquals(hospital.medications.size(), 0);
-        med.addMedication();
-        assertEquals(hospital.medications.size(), 1);
-        assertEquals(med.getHistory(), 10);
+        assertEquals(Hospital.medications.size(), 0);
+        med.addMedication(med);
+        assertEquals(Hospital.medications.size(), 1);
+        arr1.add(10);
+        assertEquals(med.getHistory(), arr1);
 
-        med.reduceMedication();
-        assertEquals(hospital.medications.size(), 0);
-        //assertArrayEquals(toArray(med.getHistory()), new int[]{10, -10});
+        med.reduceMedication(med);
+        assertEquals(Hospital.medications.size(), 0);
+        arr1.add(-10);
+        assertEquals(med.getHistory(), arr1);
     }
    
     

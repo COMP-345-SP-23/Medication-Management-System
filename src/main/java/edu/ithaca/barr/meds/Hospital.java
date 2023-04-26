@@ -10,7 +10,7 @@ import java.util.HashMap;
 public class Hospital {
 
     // ArrayList to store Medication objects
-    ArrayList<Medication> medications;
+    static ArrayList<Medication> medications;
 
     // ArrayList to store prescription information as HashMap objects
     ArrayList<HashMap<String, Object>> prescriptionList;
@@ -20,7 +20,7 @@ public class Hospital {
 
     // Constructor to initialize the ArrayLists
     public Hospital() {
-        this.medications = new ArrayList<Medication>();
+        medications = new ArrayList<Medication>();
         this.prescriptionList = new ArrayList<HashMap<String, Object>>();
         this.patients = new ArrayList<Patient>();
     }

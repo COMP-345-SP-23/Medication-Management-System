@@ -7,7 +7,7 @@ public class PatientTest {
     @Test
     public void viewMedicationTest() {
         //creating a list of available medications
-        Hospital hospital = new Hospital();
+        new Hospital();
         Medication advil = new Medication("advil", 1, 10);
         Medication tylenol = new Medication("tylenol", 2, 10);
         Hospital.medications.add(advil);
@@ -22,7 +22,7 @@ public class PatientTest {
 
     @Test
     public void requestMedicationTest() {
-        Hospital hospital = new Hospital();
+        new Hospital();
         Medication advil = new Medication("advil", 1, 10);
         Medication tylenol = new Medication("tylenol", 2, 10);
         Hospital.medications.add(advil);
@@ -37,7 +37,7 @@ public class PatientTest {
 
     @Test
     public void isPrescribedTest() {
-        Hospital hospital = new Hospital();
+        new Hospital();
         Medication advil = new Medication("advil", 1, 10);
         Medication tylenol = new Medication("tylenol", 2, 10);
         Hospital.medications.add(advil);

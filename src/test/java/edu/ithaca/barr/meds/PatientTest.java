@@ -7,11 +7,10 @@ public class PatientTest {
     @Test
     public void viewMedicationTest() {
         //creating a list of available medications
-        Hospital hospital = new Hospital();
-        Medication advil = new Medication("advil", 1,8);
-        Medication tylenol = new Medication("tylenol", 2,8);
-        hospital.medications.add(advil);
-        hospital.medications.add(tylenol);
+        Medication advil = new Medication("advil", 1, 10);
+        Medication tylenol = new Medication("tylenol", 2, 10);
+        Hospital.medications.add(advil);
+        Hospital.medications.add(tylenol);
 
         Patient p1 = new Patient("patient", "smith", 1, "patient@a.com", "password");
         p1.prescribedMeds.add(advil);
@@ -22,11 +21,10 @@ public class PatientTest {
 
     @Test
     public void requestMedicationTest() {
-        Hospital hospital = new Hospital();
-        Medication advil = new Medication("advil", 1,9);
-        Medication tylenol = new Medication("tylenol", 2,90);
-        hospital.medications.add(advil);
-        hospital.medications.add(tylenol);
+        Medication advil = new Medication("advil", 1, 10);
+        Medication tylenol = new Medication("tylenol", 2, 10);
+        Hospital.medications.add(advil);
+        Hospital.medications.add(tylenol);
 
         Patient p1 = new Patient("patient", "smith", 1, "patient@a.com", "password");
         p1.prescribedMeds.add(advil);
@@ -37,10 +35,9 @@ public class PatientTest {
 
     @Test
     public void isPrescribedTest() {
-        Hospital hospital = new Hospital();
-        Medication advil = new Medication("advil", 1,7);
-        Medication tylenol = new Medication("tylenol", 2,50);
-        hospital.medications.add(advil);
+        Medication advil = new Medication("advil", 1, 10);
+        Medication tylenol = new Medication("tylenol", 2, 10);
+        Hospital.medications.add(advil);
 
         Patient p1 = new Patient("patient", "smith", 1, "patient@a.com", "password");
         p1.prescribedMeds.add(advil);

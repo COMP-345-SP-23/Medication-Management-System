@@ -46,6 +46,7 @@ public class MedicationTest {
      */
     @Test
     public void testAddReduceUpdate() {
+        Hospital hospital = new Hospital();
         Medication med = new Medication("Aspirin", 123, 10);
         ArrayList<Integer> arr1 = new ArrayList<>();
 

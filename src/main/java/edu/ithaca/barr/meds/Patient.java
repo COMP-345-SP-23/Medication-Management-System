@@ -10,6 +10,8 @@ public class Patient {
     private int id;
     private String email;
     private String password;
+    private boolean notTakenProperly;
+    private boolean done;
     ArrayList<Medication> prescribedMeds;
     ArrayList<Medication> currentMeds;
     public Patient(String firstname, String lastname, int id, String email, String password) {
@@ -20,6 +22,7 @@ public class Patient {
         this.password = password;
         this.prescribedMeds = new ArrayList<>();
         this.currentMeds = new ArrayList<>();
+        
     }
 
     public ArrayList<Medication> viewMedication() {
@@ -51,6 +54,13 @@ public class Patient {
         return password;
     }
     
+    public void setNotTakenProperly(boolean notTakenProperly){
+        this.notTakenProperly = notTakenProperly;
+    }
+
+    public boolean getNotTakenProperly( ){
+        return notTakenProperly;
+    }
 
     public boolean isPrescribed(Medication med) {
         if (prescribedMeds.contains(med)) {

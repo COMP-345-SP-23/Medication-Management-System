@@ -50,10 +50,10 @@ Sprint 2 Goal:
 The nurse and patient should be able to interact with the medications, note whether or not it has been taken, and ensure we as users can interact with the product.
 
 Link to Sprint-2 Demo Template: 
-<<add link here>>
+https://docs.google.com/document/d/13I9qBxyDp7U4QhsnHe_qwfHW9Dnpp63RJJuaEBakXiw/edit
 
 Link to Sprint-2 Retrospective Template: 
-<<add link here>>
+https://docs.google.com/document/d/1GyUqQ98g1fyjH1OvfaZ-NeLqj2uE4O_gJG5dDpgdiQ8/edit
 
 Use Cases to implement: 
 1. -

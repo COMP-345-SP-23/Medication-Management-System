@@ -111,5 +111,4 @@ public ArrayList<Patient> getPatientsNotTakingMedProperly(){
 }
 
 
-
 }

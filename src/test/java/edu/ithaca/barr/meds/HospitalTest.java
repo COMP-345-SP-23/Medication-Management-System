@@ -82,7 +82,7 @@ public class HospitalTest {
         hospital.addToPrescriptionList(prescription1);
         hospital.addToPrescriptionList(prescription2);
 
-        HashMap<String, Object> result = hospital.searchPrescriptionByPatientId(1);
+        HashMap<String, Object> result = hospital.searchPrescriptionByPatientId(1).get(0);
 
         assertNotNull(result);
         assertEquals("John", ((Patient) result.get("patient")).getFirstName());

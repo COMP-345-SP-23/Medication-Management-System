@@ -67,14 +67,20 @@ public class Hospital {
     }
 
     // Method to search for a prescription by Patient's id
-    public HashMap<String, Object> searchPrescriptionByPatientId(int patientId) {
+    public ArrayList<HashMap<String, Object>> searchPrescriptionByPatientId(int patientId) {
+        ArrayList<HashMap<String, Object>> prescriptionsForPatient= new ArrayList<HashMap<String, Object>>();
+        boolean found = false;
         for (HashMap<String, Object> prescription : prescriptionList) {
             Patient patient = (Patient) prescription.get("patient");
             if (patient.getId() == patientId) {
-                return prescription;
+                found = true;
+                prescriptionsForPatient.add(prescription);
             }
         }
-        return null;
+        if(found == true)
+         return prescriptionsForPatient;
+        else
+         return null;
     }
 
     //Method to search a specific prescription for a patient

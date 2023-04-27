@@ -65,4 +65,53 @@ public class DoctorTest {
         });
     }
 
+    @Test
+    void testGetHistory(){
+        Hospital hospital = new Hospital();
+        Doctor doctor = new Doctor("Doc@gmail.com", "123pass#123", hospital);
+        doctor.addMedication("Asprin", 20);
+        doctor.addMedication("Iboprofen", 40);
+    }
+
+    @Test
+    void testGetPatientsNotTakingMedsProperly(){
+        Hospital hospital = new Hospital();
+        Doctor doctor = new Doctor("d@gmail.com","Password123",hospital);
+
+        hospital.createPatient("Simret", "Melak","smelak@ithaca.edu","Password123");
+        hospital.createPatient("Nardos", "Mamo","nmamo@ithaca.edu","Password123@");
+        hospital.createPatient("John", "Barr","jbarr@ithaca.edu","Password123#");
+
+        //Checking if the patient accounts are created
+        assertEquals("John" , hospital.searchPatient(3).getFirstName());
+
+        hospital.addToMedications("Asprin", 10);
+        hospital.addToMedications("Iboprofen", 20);
+        hospital.addToMedications("Gofen", 15);
+
+        //Checking if the medications are created and added to the hospital
+        assertEquals("Asprin" , hospital.searchMedication(1).getName());
+        //Checking if the quantity is right
+        assertEquals(20, hospital.searchMedication(2).getQuantity());
+
+        doctor.prescribeMedication(1, 1, 500, 2, 10, 4);
+        doctor.prescribeMedication(1, 2, 300, 2, 10, 4);
+        doctor.prescribeMedication(3, 1, 500, 2, 10, 4);
+
+        //Check if the Doctor is actually prescribing a medication
+        assertEquals(500.00,hospital.prescriptionList.get(0).get("dosage"));
+
+        Nurse nurse = new Nurse(hospital);
+
+        /* Check that the patients that are not taking their medications properly are
+         * flaged and reported to the doctor
+         */
+        nurse.medicationTaken(1, 2, 1);
+        nurse.medicationTaken(1, 3, 3);
+
+        assertEquals(true, hospital.searchPatient(1).getNotTakenProperly());
+        assertEquals(1,doctor.getPatientsNotTakingMedProperly().get(0).getId());
+        assertEquals(2,doctor.getPatientsNotTakingMedProperly().size());
+        
+    }
 }

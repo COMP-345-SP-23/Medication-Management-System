@@ -103,7 +103,7 @@ public void prescribeMedication(int patientId, int medicationId, double dosage, 
 
 public ArrayList<Patient> getPatientsNotTakingMedProperly(){
     for(Patient patient : hospital.getPatients()){
-        if(patient.getNotTakenProperly()==true){
+        if(patient.getNotTakenProperly()==true && !patientsNotTakingMedProperly.contains(patient)){
             patientsNotTakingMedProperly.add(patient);
         }
     }

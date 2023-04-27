@@ -127,7 +127,7 @@ public class UI {
                String email = scnr.next();
 
                try{
-                   hospital.isEmailValid(email);
+                   Hospital.isEmailValid(email);
                }
                catch(IllegalArgumentException e){
                        System.out.println("Email is invalid try again");                

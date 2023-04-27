@@ -177,8 +177,8 @@ public class UI {
                
                         }
                         break;
-                    }
-                    break;
+                    
+                    
                     
                     case 3:
                         System.out.println("Enter email:");
@@ -240,10 +240,7 @@ public class UI {
                                     logout = true;
                                 }
                         }
-
-
-
-
+                    }
 
 
 

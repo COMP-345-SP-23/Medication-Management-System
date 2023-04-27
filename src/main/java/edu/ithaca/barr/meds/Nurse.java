@@ -4,6 +4,11 @@ import java.util.HashMap;
 
 public class Nurse {
     Hospital hospital = new Hospital();
+
+    public Nurse(Hospital hospital){
+        this.hospital = hospital;
+    }
+
     public void medicationTaken(int medId,int quantity, int patientId){
     HashMap<String, Object> prescription = hospital.searchMedicationForPatient(medId, patientId);
     

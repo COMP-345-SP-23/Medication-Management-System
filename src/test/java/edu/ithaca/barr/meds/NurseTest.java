@@ -36,11 +36,26 @@ public class NurseTest {
         //Check if the Doctor is actually prescribing a medication
         assertEquals(500.00,hospital.prescriptionList.get(0).get("dosage"));
 
-        //check if searchMedicationForPatient method actually returns the needed prescription
+        //Check if searchMedicationForPatient method actually returns the needed prescription
         assertEquals(300.00,hospital.searchMedicationForPatient(2, 1).get("dosage"));
         assertEquals(500.00,hospital.searchPrescriptionByPatientId(1).get(0).get("dosage"));
 
+        Nurse nurse = new Nurse(hospital);
 
+        nurse.medicationTaken(1, 4, 1);
+        /*Check if the total amount of medication that a patient is left with 
+        is updated whenever they take a medication
+        */
+        assertEquals(6, hospital.searchMedicationForPatient(1, 1).get("TotalAmount"));
+        assertEquals(false, hospital.searchPatient(1).getNotTakenProperly());
+
+        /* Check that the patients that are not taking their medications properly are
+         * flaged and reported to the doctor
+         */
+        nurse.medicationTaken(1, 2, 1);
+        assertEquals(true, hospital.searchPatient(1).getNotTakenProperly());
+        assertEquals(1,doctor.getPatientsNotTakingMedProperly().get(0).getId());
+        
 
 
     }

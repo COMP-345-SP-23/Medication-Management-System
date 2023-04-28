@@ -5,6 +5,7 @@
 Names:
 << Simret, Ryan, Nardos, Jackson >>
 
+
 ## Sprint 1
 
 Link to UML Diagrams:
@@ -19,8 +20,6 @@ https://docs.google.com/document/d/1fax_K5YwO2fSB1nvWPvlz7bAZdY4FE4a0QqgtNC8f9I/
 Link to Sprint-1 Retrospective Template:
 https://docs.google.com/document/d/1jvVmxO__ctFuvnuccIxOlFyEPgpHO2GMbjiDkYvotwk/edit?usp=sharing
 
-
-
 Three Use Cases that you will implement first:
 1. Users can log in with their account
 2. Doctors can prescribe medication to patients
@@ -32,14 +31,7 @@ Which classes & methods do you need to implement for these use cases?
 2. Patient - requestMedication, viewMedication, isPrescribed, getPassword (Ryan)
 3. Hospital - searchMedication, createDoctorAccount, createPatientAccount, login, isAccountValid, isEmailValid, isInputValid, isPasswordValid (Nardos, Jackson)
 4. Medication - getName, getId, getDosage, getFrequency (Nardos)
-5. << add more as needed >>
 
-Don't forget to use Test-Driven Development (TDD)
-1. Write Class and Method Function Headers
-2. Write Tests
-3. Implement Method Functions
-
-Good Luck!
 
 ## Sprint 2
 
@@ -56,14 +48,14 @@ Link to Sprint-2 Retrospective Template:
 https://docs.google.com/document/d/1GyUqQ98g1fyjH1OvfaZ-NeLqj2uE4O_gJG5dDpgdiQ8/edit
 
 Use Cases to implement: 
-1. -
-2. -
-3. -
+1. Medication should have a history that shows how much of a med is added or taken away from the hospital
+2. Nurse should notify the doctor when a patient finishes their prescription
+3. Users should be able to search for medications prescribed to a patient
 
 Classes and methods to implement: 
-1. -
-2. -
-3. -
-4. -
-5. -
+1. UI
+2. Nurse - 
+3. Medication - getQuantity, getHistory, addMedication, reduceMedication, updateHistory (Ryan)
+4. Hospital - 
+5. Patient - 
 

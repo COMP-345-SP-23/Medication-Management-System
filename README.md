@@ -56,6 +56,6 @@ Classes and methods to implement:
 1. UI
 2. Nurse - 
 3. Medication - getQuantity, getHistory, addMedication, reduceMedication, updateHistory (Ryan)
-4. Hospital - 
-5. Patient - 
+4. Hospital - searchMedForPatient, searchPrescriptionForPatient
+5. Patient - setFinishPrescription, FinishMedication 
 

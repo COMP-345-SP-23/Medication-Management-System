@@ -58,4 +58,5 @@ Classes and methods to implement:
 3. Medication - getQuantity, getHistory, addMedication, reduceMedication, updateHistory (Ryan)
 4. Hospital - searchMedForPatient, searchPrescriptionForPatient
 5. Patient - setFinishPrescription, FinishMedication 
+6. Doctor -
 

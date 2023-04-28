@@ -53,10 +53,9 @@ Use Cases to implement:
 3. Users should be able to search for medications prescribed to a patient
 
 Classes and methods to implement: 
-1. UI
-2. Nurse - 
-3. Medication - getQuantity, getHistory, addMedication, reduceMedication, updateHistory (Ryan)
-4. Hospital - searchMedForPatient, searchPrescriptionForPatient,addPrescriptionList, searchPrescriptionByPatientId, searchPatient(Simret)(Nardos)
-5. Patient - setNotTakenProperly, getNotTakenProperly, setFinishPrescription, FinishMedication, viewMedication(Simret)(Nardos)
-6. Doctor -
-
+1. UI (Jackson)(Nardos)
+3. Nurse - medicationTaken(Simret)(Nardos)
+4. Medication - getQuantity, getHistory, addMedication, reduceMedication, updateHistory (Ryan)
+5. Hospital - searchMedForPatient, searchPrescriptionForPatient,addPrescriptionList, searchPrescriptionByPatientId, searchPatient(Simret)(Nardos)
+6. Patient - setNotTakenProperly, getNotTakenProperly, setFinishPrescription, FinishMedication, viewMedication(Simret)(Nardos)
+7. Doctor - addMedication,DeleteMedication,updateMedication,prescribeMedication,getMedHistory,getPatientsNotTakingMedProperly(Simret)

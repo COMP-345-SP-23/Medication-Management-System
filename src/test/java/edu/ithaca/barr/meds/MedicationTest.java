@@ -51,12 +51,12 @@ public class MedicationTest {
         ArrayList<Integer> arr1 = new ArrayList<>();
 
         assertEquals(Hospital.medications.size(), 0);
-        med.addMedication(med);
+        med.addMedication();
         assertEquals(Hospital.medications.size(), 1);
         arr1.add(10);
         assertEquals(med.getHistory(), arr1);
 
-        med.reduceMedication(med);
+        med.reduceMedication();
         assertEquals(Hospital.medications.size(), 0);
         arr1.add(-10);
         assertEquals(med.getHistory(), arr1);

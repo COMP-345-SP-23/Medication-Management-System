@@ -10,7 +10,7 @@ public class Doctor {
     String password;
     
     private ArrayList<Patient> patientsNotTakingMedProperly = new ArrayList<>();
-
+    private ArrayList<Patient> patientDonewithMed = new ArrayList<>();
     
     public Doctor(String email, String password,Hospital hospital){
         this.email = email;
@@ -110,5 +110,12 @@ public ArrayList<Patient> getPatientsNotTakingMedProperly(){
     return patientsNotTakingMedProperly;
 }
 
-
+public ArrayList<Patient> getPatientMedicineList() {
+     for(Patient patient : hospital.getPatients()){
+            if(patient.finishMedication()==true){
+                patientDonewithMed.add(patient);
+            }
+        }
+        return  patientDonewithMed;
+    }
 }

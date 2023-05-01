@@ -35,21 +35,19 @@ public class Medication {
         return history;
     }
 
-    public void addMedication() {
-        Hospital.medications.add(this);
-        updateHistory(this.getQuantity());
+    public void addMedication(int amount) {
+        this.quantity += amount;
+        updateHistory(amount);
     }
 
-    public void reduceMedication() {
-        if (Hospital.medications.contains(this)) {
-            Hospital.medications.remove(this);
-
-            int amount = this.getQuantity();
-            amount -= 2 * amount;
-            updateHistory(amount);
+    public void reduceMedication(int amount) {
+        if (amount <= this.quantity) {
+            this.quantity -= amount;
+            int negativeAmount = amount - (2*amount);
+            updateHistory(negativeAmount);
         }
         else {
-            System.out.println("Medication not found");
+            System.out.println("Amount invalid");
         }
     }
 

@@ -46,20 +46,19 @@ public class MedicationTest {
      */
     @Test
     public void testAddReduceUpdate() {
-        new Hospital();
-        Medication med = new Medication("Aspirin", 123, 10);
-        ArrayList<Integer> arr1 = new ArrayList<>();
+        ArrayList<Integer> arr = new ArrayList<>();
+        Medication aspirin = new Medication("Aspirin", 123, 10);
+        assertEquals(aspirin.getQuantity(), 10);
 
-        assertEquals(Hospital.medications.size(), 0);
-        med.addMedication();
-        assertEquals(Hospital.medications.size(), 1);
-        arr1.add(10);
-        assertEquals(med.getHistory(), arr1);
+        aspirin.addMedication(10);
+        arr.add(10);
+        assertEquals(aspirin.getQuantity(), 20);
+        assertEquals(aspirin.getHistory(), arr);
 
-        med.reduceMedication();
-        assertEquals(Hospital.medications.size(), 0);
-        arr1.add(-10);
-        assertEquals(med.getHistory(), arr1);
+        aspirin.reduceMedication(5);
+        arr.add(-5);
+        assertEquals(aspirin.getQuantity(), 15);
+        assertEquals(aspirin.getHistory(), arr);
     }
    
     

@@ -23,6 +23,7 @@ public class Nurse {
     }
     if ((int)prescription.get("TotalAmount") == 0) {
         hospital.searchPatient(patientId).setFinishedPrescription(true);
+        
     }
 }
 }

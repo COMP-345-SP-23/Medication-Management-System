@@ -37,7 +37,7 @@ Which classes & methods do you need to implement for these use cases?
 ## Sprint 2
 
 Link to UML Diagrams: 
-https://drive.google.com/file/d/173eo1GQB0OruaIJAZN5AbeuT8WhMS_RH/view?usp=sharing
+https://drive.google.com/file/d/1mVepmgNSvVYGhmbWFRoIibc0H0D7v4-k/view?usp=sharing
 
 Sprint 2 Goal: 
 The nurse and patient should be able to interact with the medications, note whether or not it has been taken, and ensure we as users can interact with the product.

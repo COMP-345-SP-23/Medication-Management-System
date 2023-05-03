@@ -14,7 +14,7 @@ public class Medication {
     public Medication(String name, int id, int quantity){
         this.name = name;
         this.id = id;
-        this.quantity = quantity;
+        this.quantity = 0;
         this.history = new ArrayList<>();
        
     }
@@ -47,7 +47,7 @@ public class Medication {
             updateHistory(negativeAmount);
         }
         else {
-            System.out.println("Amount invalid");
+            throw new IllegalArgumentException("Invalid amount");
         }
     }
 

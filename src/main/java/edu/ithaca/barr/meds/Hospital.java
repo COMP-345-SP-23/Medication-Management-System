@@ -51,6 +51,7 @@ public class Hospital {
         int id = medications.size() + 1;
         Medication medication = new Medication(name, id,quantity);
         medications.add(medication);
+        medication.addMedication(quantity);
     }
 
     // Method to search for a Medication by its id
@@ -65,6 +66,19 @@ public class Hospital {
         }
         return result;
     }
+
+    // Method to search for a Medication by its name
+        public Medication searchMedicationByName(String name) {
+            Medication result = null;
+            for (Medication medication : medications) {
+    
+                if (medication.getName().equals(name)) {
+                    result = medication;
+                    break;
+                }
+            }
+            return result;
+        }
 
     // Method to search for a prescription by Patient's id
     public ArrayList<HashMap<String, Object>> searchPrescriptionByPatientId(int patientId) {

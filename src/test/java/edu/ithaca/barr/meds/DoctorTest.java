@@ -71,6 +71,27 @@ public class DoctorTest {
         Doctor doctor = new Doctor("Doc@gmail.com", "123pass#123", hospital);
         doctor.addMedication("Asprin", 20);
         doctor.addMedication("Iboprofen", 40);
+
+        hospital.createPatient("Simret", "Melak","smelak@ithaca.edu","Password123");
+        hospital.createPatient("Nardos", "Mamo","nmamo@ithaca.edu","Password123@");
+        
+        doctor.prescribeMedication(1, 1, 500, 2, 10, 4);
+        doctor.prescribeMedication(1, 2, 300, 2, 10, 4);
+        doctor.prescribeMedication(2, 1, 500, 2, 10, 4);
+
+        
+        //check if the history is updated every time a medication is added or prescribed
+        assertEquals(3, doctor.getMedHistory(1).size());
+
+        //check if it updates when medication is added
+        assertEquals(20, doctor.getMedHistory(1).get(0));
+
+        //check if it updates when medication is prescribed
+        assertEquals(-10, doctor.getMedHistory(1).get(1));
+
+        //check if the current quantity is updated
+        assertEquals(0, hospital.searchMedication(1).getQuantity());
+        assertEquals(30, hospital.searchMedication(2).getQuantity());
     }
 
     @Test
@@ -85,14 +106,14 @@ public class DoctorTest {
         //Checking if the patient accounts are created
         assertEquals("John" , hospital.searchPatient(3).getFirstName());
 
-        hospital.addToMedications("Asprin", 10);
+        hospital.addToMedications("Asprin", 20);
         hospital.addToMedications("Iboprofen", 20);
         hospital.addToMedications("Gofen", 15);
 
         //Checking if the medications are created and added to the hospital
         assertEquals("Asprin" , hospital.searchMedication(1).getName());
         //Checking if the quantity is right
-        assertEquals(20, hospital.searchMedication(2).getQuantity());
+        assertEquals(15, hospital.searchMedication(3).getQuantity());
 
         doctor.prescribeMedication(1, 1, 500, 2, 10, 4);
         doctor.prescribeMedication(1, 2, 300, 2, 10, 4);
@@ -114,4 +135,6 @@ public class DoctorTest {
         assertEquals(2,doctor.getPatientsNotTakingMedProperly().size());
         
     }
+
+  
 }

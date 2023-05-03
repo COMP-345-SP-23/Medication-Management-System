@@ -3,6 +3,8 @@ package edu.ithaca.barr.meds;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import javax.tools.ToolProvider;
+
 public class Doctor {
 
     Hospital hospital = new Hospital();
@@ -23,7 +25,10 @@ public class Doctor {
     
 
     public void addMedication(String name, int quantity ){
-        hospital.addToMedications(name,quantity);
+        if(hospital.searchMedicationByName(name) != null)
+            hospital.searchMedicationByName(name).addMedication(quantity);
+        else
+            hospital.addToMedications(name,quantity);
     
     }
 
@@ -82,19 +87,22 @@ public void prescribeMedication(int patientId, int medicationId, double dosage, 
         prescription.put("frequency", frequency);
         prescription.put("TotalAmount",totalAmount);
         prescription.put("amountPerDay",amountPerDay);
-        hospital.addToPrescriptionList(prescription);}
+        hospital.addToPrescriptionList(prescription);
+        
+    }
 
     
     else{
         HashMap<String, Object> prescribed = hospital.searchMedicationForPatient(medicationId,patientId);
         if((int)prescribed.get("TotalAmount")==0){
         prescribed.put("TotalAmount",(int)prescribed.get("TotalAmount") + totalAmount);
-        prescribed.put("amountPerDay",amountPerDay);}
+        prescribed.put("amountPerDay",amountPerDay);
+        }
         else
             throw new IllegalArgumentException("The patient is already taking the medication");
     }
 
-
+    medication.reduceMedication(totalAmount);
 }
  public ArrayList<Integer> getMedHistory(int medId){
    return hospital.searchMedication(medId).getHistory();

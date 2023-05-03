@@ -5,6 +5,7 @@
 Names:
 << Simret, Ryan, Nardos, Jackson >>
 
+Quick Start : Clone the repository and run the UI class
 
 ## Sprint 1
 

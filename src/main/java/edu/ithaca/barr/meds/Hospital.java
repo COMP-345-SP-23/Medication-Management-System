@@ -17,8 +17,6 @@ public class Hospital {
 
     // ArrayList to store Patient objects
     ArrayList<Patient> patients;
-    HashMap<String,Doctor> doctors = new HashMap<>();
-    ;
 
     // Constructor to initialize the ArrayLists
     public Hospital() {
@@ -35,10 +33,6 @@ public class Hospital {
     // Method to get the list of Patient objects
     public ArrayList<Patient> getPatients() {
         return patients;
-    }
-    // Method to get Patients length
-    public int getPatientsLength(){
-        return patients.size();
     }
 
     // Method to get the list of prescribed Medication information as HashMap objects
@@ -57,6 +51,7 @@ public class Hospital {
         int id = medications.size() + 1;
         Medication medication = new Medication(name, id,quantity);
         medications.add(medication);
+        medication.addMedication(medication);
     }
 
     // Method to search for a Medication by its id
@@ -71,16 +66,36 @@ public class Hospital {
         }
         return result;
     }
+    
+
+    // Method to search for a Medication by its name
+        public Medication searchMedicationByName(String name) {
+            Medication result = null;
+            for (Medication medication : medications) {
+    
+                if (medication.getName().equals(name)) {
+                    result = medication;
+                    break;
+                }
+            }
+            return result;
+        }
 
     // Method to search for a prescription by Patient's id
-    public HashMap<String, Object> searchPrescriptionByPatientId(int patientId) {
+    public ArrayList<HashMap<String, Object>> searchPrescriptionByPatientId(int patientId) {
+        ArrayList<HashMap<String, Object>> prescriptionsForPatient= new ArrayList<HashMap<String, Object>>();
+        boolean found = false;
         for (HashMap<String, Object> prescription : prescriptionList) {
             Patient patient = (Patient) prescription.get("patient");
             if (patient.getId() == patientId) {
-                return prescription;
+                found = true;
+                prescriptionsForPatient.add(prescription);
             }
         }
-        return null;
+        if(found == true)
+         return prescriptionsForPatient;
+        else
+         return null;
     }
 
     //Method to search a specific prescription for a patient
@@ -116,42 +131,13 @@ public class Hospital {
     // Method to create a Patient object and add it to the list of Patient objects
     public void createPatient(String firstname, String lastname, String email, String password) {
         if(isAccountValid(email, password)){
-            int id = patients.size() + 1;
-            Patient patient = new Patient(firstname, lastname, id, email, password);
-            patients.add(patient);}
+        int id = patients.size() + 1;
+        Patient patient = new Patient(firstname, lastname, id, email, password);
+        patients.add(patient);}
         else{
            throw new IllegalArgumentException("Incorrect email address or password.");
         }
     }
-    public boolean doesPatientExist(String email){ 
-        boolean flag = false;  
-        for(int i = 0; i < patients.size(); i++){
-            if(patients.get(i).getEmail().equals(email)){
-                flag = true;
-            }
-        }
-        return flag;
-    }
-
-    public void createDoctor(String email, String password, Hospital hospital){
-        if(isAccountValid(email, password)){
-            Doctor doctor = new Doctor(email, password, hospital);
-            doctors.put(email, doctor);
-        }
-        else{
-            throw new IllegalArgumentException("Incorrect email address or password.");
-        }
-    }
-    public boolean doesDoctorExist(String email){
-        try{
-            doctors.get(email);
-            return true;
-        }
-        catch(NullPointerException n){
-            return false;
-        }
-    }
-
 
     // Method to search for a Patient by their id
     public Patient searchPatient(int id) {
@@ -197,7 +183,7 @@ public class Hospital {
     }
 
 
-    public boolean isEmailValid(String email) {
+    public static boolean isEmailValid(String email) {
         int indexOfAT = email.indexOf('@');
 
 
@@ -281,7 +267,7 @@ public class Hospital {
     }
 
 
-        public boolean isInputValid(String input){
+        public static boolean isInputValid(String input){
             if(input.length()>0 && !input.equals("") && !input.equals(" ") && input != null){
                 return true;
             }else{
@@ -298,6 +284,16 @@ public class Hospital {
             }
         }
 
-       
+        public boolean doesPatientExist(String email){ 
+            boolean flag = false;  
+            for(int i = 0; i < patients.size(); i++){
+                if(patients.get(i).getEmail().equals(email)){
+                    flag = true;
+                }
+            }
+            return flag;
+        }
 
+       
+        
 }

@@ -23,11 +23,13 @@ public class UI {
         int logoutScan;
         boolean logout = false;
         boolean flag = false;
+        boolean login = false;
         
        System.out.println("Welcome to Smart Medication");
 
        while(true){
         logout = false;
+        login = false;
         System.out.println("1. Login");
         System.out.println("2. Signup");
            choice= scnr.nextInt();
@@ -54,18 +56,19 @@ public class UI {
                    System.out.println("Enter email:");
                    email=scnr.next();
 
-                   if(!hospital.doesDoctorExist(email)){
-                    System.out.println("Incorrect email");
-                   }
-                   else{
-                    doctor = hospital.doctors.get(email);
-                   }
+                   
+                   
                                      
                    System.out.println("Enter Password:");
                    password= scnr.next();
                 
-                   if(!password.equals(doctor.getPassword()) ){
-                        System.out.println("Incorrect Password. Try again!");
+                   
+                   if(doctor.getEmail().equals(email) && doctorPassword.equals(password)){
+                    System.out.println("Login successful");
+                    login = true;
+                   }
+                   else{
+                    System.out.println("Information Invalid");
                    }
                    
                    // Check if the doctor's email and password are correct
@@ -76,7 +79,7 @@ public class UI {
                    */
            
                    
-                   while(logout == false){
+                   while(login == true){
                         System.out.println("//////////////////////////////////////////////////////////////////////");
                         System.out.println("//////////////////////////////////////////////////////////////////////");
                         System.out.println("");
@@ -112,6 +115,7 @@ public class UI {
                                         try {
                                             doctor.prescribeMedication(pId,medId,dosage,freq,totAmount,perDay);
                                             System.out.println("Medication prescribed successfully.");
+                                            
                                         } catch (IllegalArgumentException e) {
                                             System.out.println(e.getMessage());
                                             
@@ -140,6 +144,7 @@ public class UI {
                                         int quantity= scnr.nextInt();
 
                                         doctor.addMedication(name,quantity);
+                                        hospital.addToMedications(name, quantity);
                                         System.out.println("Medication  added successfully!");
 
                                         break;
@@ -169,6 +174,7 @@ public class UI {
                                     logoutScan = scnr.nextInt();
                                     if(logoutScan == 1){
                                         logout = true;
+                                        login = false;
                                     }
 
 
@@ -218,19 +224,12 @@ public class UI {
                                     case 1:
                                         System.out.println("Enter name of medicine you want request: ");
                                         requestMedicine = scnr.next();
-                                        for(int i =0; i < hospital.medications.size(); i++){
-                                            if(hospital.searchMedication(i).getName()==requestMedicine){
-                                                medication = hospital.searchMedication(i);
-                                                patient.requestMedication(medication);
-                                                flag = true;
-                                            }
-                                        }
-                                        if(flag != true){
-                                            System.out.println("Medicine does not exist.");
-                                        }
+                                        System.out.println(hospital.searchPrescriptionByPatientId(hospital.patients.size()-1));
+                                        
+                                        
                                     break;
                                     case 2:
-                                        System.out.print(patient.viewMedication());
+                                        System.out.println(hospital.searchPrescriptionByPatientId(hospital.patients.size()-1));
                                     break;
                                 }
                                 System.out.println("1. Logout");
@@ -240,84 +239,16 @@ public class UI {
                                     logout = true;
                                 }
                         }
+                        
                     }
+                    break;
 
 
 
            case 2:
            //Create Account
            
-                System.out.println("Select an option:");
-                System.out.println("1.Doctor"+ " 2.Nurse"+ " 3.Patient");
-            
-
-                choice= scnr.nextInt();
-                switch(choice){
-                        case 1:
-
-
-                            //Create Doctor Account
-
-
-                            System.out.println("Create a Doctor account");
-                        
-                            System.out.println("Enter your email: ");
-                            email = scnr.next();
-            
-                            try{
-                                hospital.isEmailValid(email);
-                            }
-                            catch(IllegalArgumentException e){
-                                    System.out.println("Email is invalid try again");                
-                            }
-            
-                            System.out.println("Create Password:");
-                            password =scnr.next();
-                            try{
-                                hospital.isPasswordValid(password);
-                                hospital.createDoctor(email, password, hospital);
-                                System.out.println("Account has been successfully created!!");
-                            }
-                            catch(IllegalArgumentException e){
-                                System.out.println("Password is not valid");
-                            }
-                            break;
-
-
-
-                        case 2:
-                            //Create Nurse Account
-
-
-                            System.out.println("Create an accout");
-                        
-                            System.out.println("Enter your email: ");
-                            email = scnr.next();
-            
-                            try{
-                                hospital.isEmailValid(email);
-                            }
-                            catch(IllegalArgumentException e){
-                                    System.out.println("Email is invalid try again");                
-                            }
-            
-                            System.out.println("Create Password:");
-                            password =scnr.next();
-                            try{
-                                hospital.isPasswordValid(password);
-                                
-                                System.out.println("Account has been successfully created!!");
-                            }
-                            catch(IllegalArgumentException e){
-                                System.out.println("Password is not valid");
-                            }
-                            break;
-
-
-
-                        case 3:
-                            //Create patient Account
-
+     
 
                             System.out.println("Create a Patient account");
                         
@@ -358,19 +289,21 @@ public class UI {
                             try{
                                 hospital.isPasswordValid(password);
                                 hospital.createPatient(firstName, lastName, email, password);
+                                patient = hospital.searchPatient(hospital.patients.size());
                                 System.out.println("Account has been successfully created!!");
+                                System.out.println("your patient ID is " + patient.getId());
                             }
                             catch(IllegalArgumentException e){
                                 System.out.println("Password is not valid");
                             }
-                            break;            
+                                      
 
 
 
 
                 
                 
-                }  
+                 
            }
        }
    

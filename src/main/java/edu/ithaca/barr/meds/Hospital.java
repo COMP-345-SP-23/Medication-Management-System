@@ -67,19 +67,18 @@ public class Hospital {
         return result;
     }
 
-    // Method to search for a Medication by its name
-        public Medication searchMedicationByName(String name) {
-            Medication result = null;
-            for (Medication medication : medications) {
-    
-                if (medication.getName().equals(name)) {
-                    result = medication;
-                    break;
-                }
-            }
-            return result;
-        }
+     // Method to search for a Medication by its name
+     public Medication searchMedicationByName(String name) {
+        Medication result = null;
+        for (Medication medication : medications) {
 
+            if (medication.getName().equals(name)) {
+                result = medication;
+                break;
+            }
+        }
+        return result;
+    }
     // Method to search for a prescription by Patient's id
     public ArrayList<HashMap<String, Object>> searchPrescriptionByPatientId(int patientId) {
         ArrayList<HashMap<String, Object>> prescriptionsForPatient= new ArrayList<HashMap<String, Object>>();
@@ -266,7 +265,7 @@ public class Hospital {
     }
 
 
-        public boolean isInputValid(String input){
+        public static boolean isInputValid(String input){
             if(input.length()>0 && !input.equals("") && !input.equals(" ") && input != null){
                 return true;
             }else{
@@ -283,6 +282,16 @@ public class Hospital {
             }
         }
 
-       
+        public boolean doesPatientExist(String email){ 
+            boolean flag = false;  
+            for(int i = 0; i < patients.size(); i++){
+                if(patients.get(i).getEmail().equals(email)){
+                    flag = true;
+                }
+            }
+            return flag;
+        }
 
+       
+        
 }

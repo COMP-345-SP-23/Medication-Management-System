@@ -29,11 +29,6 @@ public class Patient {
         return currentMeds;
     }
 
-    public void requestMedication(Medication med) {
-        if (prescribedMeds.contains(med)) {
-            currentMeds.add(med);
-        }
-    }
     public int getId(){
         return id;
     }

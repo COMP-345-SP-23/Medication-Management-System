@@ -15,7 +15,7 @@ public class PatientTest {
 
         Patient p1 = new Patient("patient", "smith", 1, "patient@a.com", "password");
         p1.prescribedMeds.add(advil);
-        p1.requestMedication(advil);
+        //p1.requestMedication(advil);
         assertTrue(p1.viewMedication().contains(advil));
         assertFalse(p1.viewMedication().contains(tylenol));
     }
@@ -30,7 +30,7 @@ public class PatientTest {
 
         Patient p1 = new Patient("patient", "smith", 1, "patient@a.com", "password");
         p1.prescribedMeds.add(advil);
-        p1.requestMedication(advil);
+        //p1.requestMedication(advil);
         assertTrue(p1.currentMeds.contains(advil));
         assertFalse(p1.currentMeds.contains(tylenol));
     }

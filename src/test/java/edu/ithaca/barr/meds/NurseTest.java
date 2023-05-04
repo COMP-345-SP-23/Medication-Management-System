@@ -20,7 +20,7 @@ public class NurseTest {
         //Checking if the patient accounts are created
         assertEquals("John" , hospital.searchPatient(3).getFirstName());
 
-        hospital.addToMedications("Asprin", 10);
+        hospital.addToMedications("Asprin", 20);
         hospital.addToMedications("Iboprofen", 20);
         hospital.addToMedications("Gofen", 15);
 
@@ -35,6 +35,9 @@ public class NurseTest {
 
         //Check if the Doctor is actually prescribing a medication
         assertEquals(500.00,hospital.prescriptionList.get(0).get("dosage"));
+
+        //Check if the patient can see their prescribed medication
+        assertEquals(2,hospital.searchPrescriptionByPatientId(1).size());
 
         //Check if searchMedicationForPatient method actually returns the needed prescription
         assertEquals(300.00,hospital.searchMedicationForPatient(2, 1).get("dosage"));
@@ -56,7 +59,5 @@ public class NurseTest {
         assertEquals(true, hospital.searchPatient(1).getNotTakenProperly());
         assertEquals(1,doctor.getPatientsNotTakingMedProperly().get(0).getId());
         
-
-
     }
 }

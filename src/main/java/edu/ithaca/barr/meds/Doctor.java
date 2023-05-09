@@ -118,7 +118,7 @@ public ArrayList<Patient> getPatientsNotTakingMedProperly(){
     return patientsNotTakingMedProperly;
 }
 
-public ArrayList<Patient> getPatientMedicineList() {
+public ArrayList<Patient> getPatientsDone() {
      for(Patient patient : hospital.getPatients()){
             if(patient.finishMedication()==true){
                 patientDonewithMed.add(patient);

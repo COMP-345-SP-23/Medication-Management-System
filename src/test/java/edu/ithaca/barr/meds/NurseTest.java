@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class NurseTest {
-
+ //System test
     @Test
     public void testMedicationTaken() {
         Hospital hospital = new Hospital();
@@ -17,6 +17,11 @@ public class NurseTest {
         hospital.createPatient("Nardos", "Mamo","nmamo@ithaca.edu","Password123@");
         hospital.createPatient("John", "Barr","jbarr@ithaca.edu","Password123#");
 
+        //check if it throws an error if invalid email is entered
+        assertThrows(IllegalArgumentException.class, () -> {
+            hospital.createPatient("John", "Barr","j","Password123#");   
+        });
+      
         //Checking if the patient accounts are created
         assertEquals("John" , hospital.searchPatient(3).getFirstName());
 
@@ -38,6 +43,8 @@ public class NurseTest {
 
         //Check if the patient can see their prescribed medication
         assertEquals(2,hospital.searchPrescriptionByPatientId(1).size());
+        //Check that it returns null if the patient has no prescription
+        assertEquals(null,hospital.searchPrescriptionByPatientId(2));
 
         //Check if searchMedicationForPatient method actually returns the needed prescription
         assertEquals(300.00,hospital.searchMedicationForPatient(2, 1).get("dosage"));
@@ -51,13 +58,33 @@ public class NurseTest {
         */
         assertEquals(6, hospital.searchMedicationForPatient(1, 1).get("TotalAmount"));
         assertEquals(false, hospital.searchPatient(1).getNotTakenProperly());
+         
+        /*Check if throws an error when trying to take a med that is not
+        prescribed
+        */
+        assertThrows(IllegalArgumentException.class, () -> {
+            nurse.medicationTaken(1, 2, 2);
+        });
 
+        
         /* Check that the patients that are not taking their medications properly are
          * flaged and reported to the doctor
          */
         nurse.medicationTaken(1, 2, 1);
         assertEquals(true, hospital.searchPatient(1).getNotTakenProperly());
         assertEquals(1,doctor.getPatientsNotTakingMedProperly().get(0).getId());
-        
+
+        /*Check if the patients are marked as Done with their medication if the 
+         total amount left is 0
+        */
+        nurse.medicationTaken(1, 4, 1);
+        assertEquals(1,doctor.getPatientsDone().size());
+
+        /*check if it throws an error when trying to take more than 
+         * the total amount prescribed
+         */
+        assertThrows(IllegalArgumentException.class, () -> {
+            nurse.medicationTaken(1, 2, 1);
+        });
     }
 }

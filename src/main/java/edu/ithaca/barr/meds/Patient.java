@@ -12,22 +12,17 @@ public class Patient {
     private String password;
     private boolean notTakenProperly;
     private boolean done;
-    ArrayList<Medication> prescribedMeds;
-    ArrayList<Medication> currentMeds;
+
     public Patient(String firstname, String lastname, int id, String email, String password) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.id = id;
         this.email = email;
         this.password = password;
-        this.prescribedMeds = new ArrayList<>();
-        this.currentMeds = new ArrayList<>();
+      
         
     }
 
-    public ArrayList<Medication> viewMedication() {
-        return currentMeds;
-    }
 
     public int getId(){
         return id;
@@ -57,14 +52,7 @@ public class Patient {
         return notTakenProperly;
     }
 
-    public boolean isPrescribed(Medication med) {
-        if (prescribedMeds.contains(med)) {
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
+
     public void setFinishedPrescription(boolean done){
         this.done= done;
     }

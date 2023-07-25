@@ -11,10 +11,10 @@ public class Medication {
    
     
     
-    public Medication(String name, int id, int quantity){
+    public Medication(String name, int id){
         this.name = name;
         this.id = id;
-        this.quantity = 0;
+        this.quantity =0;
         this.history = new ArrayList<>();
        
     }

@@ -27,7 +27,7 @@ public class PatientTest {
             patient.setNotTakenProperly(true);
             assertTrue(patient.getNotTakenProperly());
     
-           
+            patient.setFinishedPrescription(true);
             assertTrue(patient.finishMedication());
         }
     }

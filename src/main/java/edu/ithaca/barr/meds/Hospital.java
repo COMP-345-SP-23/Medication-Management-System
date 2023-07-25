@@ -49,7 +49,7 @@ public class Hospital {
     // Method to add Medication to the list of Medication objects
     public void addToMedications(String name, int quantity ) {
         int id = medications.size() + 1;
-        Medication medication = new Medication(name, id,quantity);
+        Medication medication = new Medication(name, id);
         medications.add(medication);
         medication.addMedication(quantity);
     }

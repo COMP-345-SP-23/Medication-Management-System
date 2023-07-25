@@ -11,7 +11,7 @@ public class MedicationTest {
      */
     @Test
     public void testGetName() {
-        Medication med = new Medication("Aspirin", 123, 10);
+        Medication med = new Medication("Aspirin", 123);
         assertEquals("Aspirin", med.getName());
     }
     /**
@@ -19,7 +19,7 @@ public class MedicationTest {
      */
     @Test
     public void testGetId() {
-        Medication med = new Medication("Aspirin", 123, 10);
+        Medication med = new Medication("Aspirin", 123);
         assertEquals(123, med.getId());
     }
 
@@ -28,7 +28,8 @@ public class MedicationTest {
      */
     @Test
     public void testGetQuantity() {
-        Medication med = new Medication("Aspirin", 123, 10);
+        Medication med = new Medication("Aspirin", 123);
+        med.addMedication(10);
         assertEquals(10, med.getQuantity());
     }
 
@@ -37,8 +38,9 @@ public class MedicationTest {
      */
     @Test
     public void testGetHistory() {
-        Medication med = new Medication("Aspirin", 123, 10);
-        assertEquals(new ArrayList<Integer>(), med.getHistory());
+        Medication med = new Medication("Aspirin", 123);
+        med.addMedication(10);
+        assertEquals(10, med.getHistory().get(0));
     }
 
     /**
@@ -47,7 +49,9 @@ public class MedicationTest {
     @Test
     public void testAddReduceUpdate() {
         ArrayList<Integer> arr = new ArrayList<>();
-        Medication aspirin = new Medication("Aspirin", 123, 10);
+        Medication aspirin = new Medication("Aspirin", 123);
+        aspirin.addMedication(10);
+        arr.add(10);
         assertEquals(aspirin.getQuantity(), 10);
 
         aspirin.addMedication(10);
